@@ -1,33 +1,34 @@
-
-import Logo from "../../assets/logo.jpg"
+import { Outlet } from "react-router-dom";
+import Logo from "../assets/logo.jpg";
 import { IoMdContacts } from "react-icons/io";
 
 const Menu = [
     {
       id: 1,
       name: "ACCUEIL",
-      link: "/#accueil",
+      link: "/accueil",
     },
     {
       id: 2,
       name: "QUI SOMMES-NOUS?",
-      link: "/#qui sommes-nous?",
+      link: "/about-us",
       
     },
     {
       id: 3,
       name: "NOS SERVICES",
-      link: "/#particulier",
+      link: "/services",
     },
     {
         id: 4,
         name: "NOUVELLE ANNONCE",
-        link: "/#annonce",
+        link: "/annonce",
       },
   ];
   const Navbar = () => {
     return (
       <>
+      <header>
         <div className="shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200">
           <div className="container py-3 sm:py-0">
             <div className="flex justify-between items-center">
@@ -62,6 +63,10 @@ const Menu = [
             </div>
           </div>
         </div>
+        </header>
+        <main>
+          <Outlet/>
+        </main>
       </>
     );
   };

@@ -1,34 +1,35 @@
-
-import Logo from "../../assets/logo.jpg"
+import { Outlet } from "react-router-dom";
+import Logo from "../assets/logo.jpg";
 import { IoMdContacts } from "react-icons/io";
 
 const Menu = [
     {
       id: 1,
       name: "ACCUEIL",
-      link: "/#accueil",
+      link: "/accueil",
     },
     {
       id: 2,
       name: "QUI SOMMES-NOUS?",
-      link: "/#qui sommes-nous?",
+      link: "/about-us",
       
     },
     {
       id: 3,
       name: "NOS SERVICES",
-      link: "/#particulier",
+      link: "/services",
     },
     {
         id: 4,
         name: "NOUVELLE ANNONCE",
-        link: "/#annonce",
+        link: "/annonce",
       },
   ];
   const Navbar = () => {
     return (
-      <> 
-        <div className="shadow-md dark:bg-gray-900 dark:text-white duration-200 bg-white">
+      <>
+      <header>
+        <div className="shadow-md bg-white dark:bg-gray-900 dark:text-white duration-200">
           <div className="container py-3 sm:py-0">
             <div className="flex justify-between items-center">
               <div>
@@ -51,17 +52,19 @@ const Menu = [
                     </li>
                   ))}
                 </ul>
-
-              
                 <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-1 px-4 rounded-full flex items-center gap-3">
                   Contact
                   <IoMdContacts className="text-xl text-white drop-shadow-sm cursor-pointer" />
                 </button>
-             
               </div>
             </div>
           </div>
         </div>
+        </header>
+        
+        <main>
+          <Outlet/>
+        </main>
       </>
     );
   };

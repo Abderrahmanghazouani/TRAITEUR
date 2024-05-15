@@ -35,8 +35,10 @@ const Footer = () => {
                 </h1> 
 
                 <p className="">
-              Lorem ipsum dolor sit amet consectetur. Lorem ipsum dolor sit amet
-              consectetur adipisicing elit. Possimus, voluptate.{" "}
+                N Saadi évents
+Meilleur choix pour tous évènements et organisation 
+Votre coup de main pour atteindre votre coup de cœur
+
             </p>
 
               </div>

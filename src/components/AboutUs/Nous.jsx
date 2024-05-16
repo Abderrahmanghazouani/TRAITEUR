@@ -40,17 +40,17 @@ const Nous = () => {
                 Chez <b>SAADI</b>, notre passion est d'aller au-delà de vos attentes pour créer des expériences exceptionnelles. Depuis notre création, nous nous sommes engagés à offrir à nos clients un service de qualité supérieure, une créativité sans limite et une attention méticuleuse aux détails.
                 </p>
                  <br />
-                <p> Notre Mission <p/>
+                <p><b>Notre Mission</b></p>
 
                  <p>Chez SAADI, notre mission est simple : surpasser les attentes de nos clients à chaque occasion. Que ce soit à travers nos services de traiteur haut de gamme, nos événements sur mesure ou notre cuisine créative, nous nous efforçons toujours de créer des moments inoubliables qui laissent une impression durable.</p>
                  <br />
-                 <p>Notre Histoire</p>
+                 <p><b>Notre Histoire</b></p>
 
                  <p>Fondée en 2005,SAADI est née de la vision d'un groupe de passionnés de la gastronomie désireux de partager leur amour pour la cuisine avec le monde. Depuis lors, notre entreprise a connu une croissance constante, élargissant notre portefeuille de services et notre réputation dans l'industrie.</p>
                  <br />
-                 <p>Notre Équipe</p>
+                 <p><b>Notre Équipe</b></p>
 
-                <p> Notre succès repose sur le talent, la dévotion et l'engagement de notre équipe. De nos chefs primés à nos professionnels du service attentionnés, chaque membre de [Nom de votre entreprise] partage une passion commune pour l'excellence et un engagement envers la satisfaction de nos clients.</p>
+                <p> Notre succès repose sur le talent, la dévotion et l'engagement de notre équipe. De nos chefs primés à nos professionnels du service attentionnés, chaque membre de SAADI partage une passion commune pour l'excellence et un engagement envers la satisfaction de nos clients.</p>
                  <br />
               </div>
             </div>

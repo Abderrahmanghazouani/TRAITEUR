@@ -1,12 +1,14 @@
 import {  AiOutlineUnlock } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
+import backgroundImage from "../assets/pic-2.jpg"
 
 
 
 const Login = () => {
 return (
    
-            <div  >
+            <div className=" text-white h-[100vh] flex justify-center items-center bg-cover "     style={{
+                backgroundImage: `url(${backgroundImage})` }} >
         <div  className="bg-slate-800 border border-slate-800 rounded-md p-8 shadow-lg
         backdrop-filter backdrop-blur-sm bg-opacity-30 relative ">
             <h1 className="text-4xl text-white font-bold text-center mb-6">Login</h1>

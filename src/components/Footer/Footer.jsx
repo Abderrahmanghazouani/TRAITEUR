@@ -76,7 +76,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="absolute bottom-4 right-4">
-          <a href="admin"><button className="bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 rounded">
+          <a href="admin"><button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
             Administration
           </button></a>
         </div>

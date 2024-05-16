@@ -34,7 +34,7 @@ const Menu = [
             <div className="flex justify-between items-center">
               <div>
                 <a href="#" className="font-bold text-2xl sm:text-3xl flex gap-2">
-                  <img src={Logo} alt="Logo" className="w-30 h-20" />
+                  <img src={Logo} alt="Logo" className="w-30 h-20 border border-e-yellow-300"/>
                   {/* Foodie */}
                 </a>
               </div>

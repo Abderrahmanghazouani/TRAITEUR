@@ -10,13 +10,10 @@ import "aos/dist/aos.css";
 // import Contact from "./components/Contact/Contact";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index.jsx";
-// <<<<<<< HEAD
 // import Login from "./Admin/Login.jsx";
 // import DemandeAnnonce from "./Admin/DemandeAnnonce.jsx";
 // import AddAnnoce from "./Admin/AddAnnoce.jsx"
-// =======
 
-// >>>>>>> ec36581b120757632a172c7984e588f49749814e
 
 
 

@@ -1,6 +1,6 @@
 import bgImg from "../../assets/pic-3.jpg";
 
-const Hero = () => {
+const Accueil = () => {
   const bgImage = {
     backgroundImage: `url(${bgImg})`,
     backgroundPosition: "center",
@@ -53,4 +53,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Accueil;

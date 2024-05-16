@@ -8,6 +8,7 @@ import Contact from "../components/Contact/Contact";
 import Annonce from "../components/Annonce/Annonce";
 import Footer from "../components/Footer/Footer";
 import Login from "../Admin/Login";
+import Traiteur from "../serviceDetails/Traiteur";
 
 function AccueilLayout() {
   return (
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
       {
         path: "/annonce",
         element: <Annonce />,
+      },
+      {
+        path: "/traiteur",
+        element: <Traiteur/>,
       },
     ],
   },

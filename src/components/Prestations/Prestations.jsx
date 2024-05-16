@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Traiteur from "../../assets/pic-traiteur.jpg";
 import Pastry from "../../assets/pastry1.jpg";
 import florale from "../../assets/dec-florale.jpg";
@@ -12,36 +12,42 @@ const CelebrationImg = [
     img: Traiteur,
     name: 'TRAITEUR',
     description: 'Description du plat Biryani.',
+    link: '/traiteur'
   },
   {
     id: 2,
     img: Pastry,
     name: 'PÂTISSERIE',
     description: 'Description du plat Chicken Curry.',
+    link: '/patisserie'
   },
   {
     id: 3,
     img: amenagement,
     name: 'AMENAGEMENT',
     description: 'Description de la boisson Cold Coffee.',
+    link: '/amenagement'
   },
   {
     id: 4,
     img: florale,
     name: 'DECORATION FLORALE',
     description: 'Description du plat Pasta.',
+    link: '/decoration-florale'
   },
   {
     id: 5,
     img: table,
     name: 'ART DE LA TABLE',
     description: 'Description de la salade.',
+    link: '/art-de-la-table'
   },
   {
     id: 6,
     img: service,
     name: 'AUTRE SERVICES',
     description: 'Description du smoothie.',
+    link: '/autres-services'
   },
 ];
 
@@ -55,21 +61,22 @@ const Celebration = () => {
           </p>
           <h1 className="text-3xl font-bold">SERVICES</h1>
           <p className="text-sm  text-gray-500">
-           Vous été à la recherche d’un traiteur pour un évènement à Marrakech ou partout au Maroc N Saadi évents 
-          vous propose des menus adaptés à votre thème, vous envies et votre budget
+           Vous êtes à la recherche d’un traiteur pour un évènement à Marrakech ou partout au Maroc N Saadi évents vous propose des menus adaptés à votre thème, vos envies et votre budget
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center">
           {CelebrationImg.map((service) => (
-            <div key={service.id} className="rounded-lg bg-white shadow-md hover:shadow-lg transition duration-300 ease-in-out" style={{ width: '280px', height: '280px' }}>
-              <div className="h-48 overflow-hidden">
-                <img src={service.img} alt={service.name} className="w-full h-full object-cover" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <a key={service.id} href={service.link}>
+              <div className="rounded-lg bg-white shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-300" style={{ width: '280px', height: '280px' }}>
+                <div className="h-48 overflow-hidden">
+                  <img src={service.img} alt={service.name} className="w-full h-full object-cover" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div className="p-4">
+                  <h2 className="text-lg font-semibold text-center">{service.name}</h2>
+                  {/* <p className="text-sm text-gray-600">{service.description}</p> */}
+                </div>
               </div>
-              <div className="p-4">
-                <h2 className="text-lg font-semibold text-center">{service.name}</h2>
-                {/* <p className="text-sm text-gray-600">{service.description}</p> */}
-              </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>
@@ -78,5 +85,3 @@ const Celebration = () => {
 };
 
 export default Celebration;
-
-

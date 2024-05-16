@@ -11,6 +11,8 @@ import "aos/dist/aos.css";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index.jsx";
 import Login from "./Admin/Login.jsx";
+import DemandeAnnonce from "./Admin/DemandeAnnonce.jsx";
+import AddAnnoce from "./Admin/AddAnnoce.jsx"
 
 
 
@@ -31,7 +33,9 @@ const App = () => {
       <RouterProvider router={router} />  
       <div className="text-white h-[100vh] flex justify-center items-center bg-cover"  style={{ backgroundImage: "url('../src/assets/pic-1.jpg')" }}>
         <Login/>
-        </div>  
+        </div>
+        <DemandeAnnonce/>  
+        <AddAnnoce/>
     </>
   );
 

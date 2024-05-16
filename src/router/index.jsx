@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import Accueil from "../components/Accueil/Accueil";
+import Nous from "../components/AboutUs/Nous";
 import AboutUs from "../components/AboutUs/AboutUs";
 import Prestations from "../components/Prestations/Prestations";
 import Contact from "../components/Contact/Contact";
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: <AboutUs />,
+        element: <Nous/>,
       },
       {
         path: "/annonce",

@@ -3,7 +3,7 @@ import BiryaniImg from "../../assets/pic-2.jpg";
 // import BgImg from "../../assets/vector3.png";
 
 
-const AboutUs = () => {
+const Nous = () => {
 //   const bgImage = {
 //     backgroundImage: `url(${BgImg})`,
 //     backgroundPosition: "center",
@@ -15,7 +15,7 @@ const AboutUs = () => {
 
   return (
     <>
-      <div className="min-h-[550px] ">
+      <div className="min-h-[550px] mt-5 ">
         <div className="min-h-[550px] flex justify-center items-center backdrop-blur-xl py-10 sm:py-0 ">
           <div
             data-aos="slide-up"
@@ -24,7 +24,7 @@ const AboutUs = () => {
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {/* Image section */}
-              <div>
+              <div className="flex justify-center items-center">
                 <img
                   src={BiryaniImg}
                   alt="biryani img"
@@ -36,15 +36,22 @@ const AboutUs = () => {
                 <h1 className="text-3xl sm:text-4xl font-bold">
                   Qui sommes-nous?
                 </h1>
-                <p className="text-sm text-gray-500 tracking-wide leading-5">
+                <p>
                 Chez <b>SAADI</b>, notre passion est d'aller au-delà de vos attentes pour créer des expériences exceptionnelles. Depuis notre création, nous nous sommes engagés à offrir à nos clients un service de qualité supérieure, une créativité sans limite et une attention méticuleuse aux détails.
                 </p>
-              
-                <div>
-                  <a href="about-us"><button className="bg-gradient-to-r from-primary to-secondary text-white py-2 px-4 rounded-full shadow-xl hover:shadow-md">
-                    Voir Plus
-                  </button></a>
-                </div>
+                 <br />
+                <p> Notre Mission
+
+                 Chez SAADI, notre mission est simple : surpasser les attentes de nos clients à chaque occasion. Que ce soit à travers nos services de traiteur haut de gamme, nos événements sur mesure ou notre cuisine créative, nous nous efforçons toujours de créer des moments inoubliables qui laissent une impression durable.</p>
+                 <br />
+                 <p>Notre Histoire
+
+                 Fondée en 2005,SAADI est née de la vision d'un groupe de passionnés de la gastronomie désireux de partager leur amour pour la cuisine avec le monde. Depuis lors, notre entreprise a connu une croissance constante, élargissant notre portefeuille de services et notre réputation dans l'industrie.</p>
+                 <br />
+                 <p>Notre Équipe
+
+                 Notre succès repose sur le talent, la dévotion et l'engagement de notre équipe. De nos chefs primés à nos professionnels du service attentionnés, chaque membre de [Nom de votre entreprise] partage une passion commune pour l'excellence et un engagement envers la satisfaction de nos clients.</p>
+                 <br />
               </div>
             </div>
           </div>
@@ -54,4 +61,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs;
+export default Nous;

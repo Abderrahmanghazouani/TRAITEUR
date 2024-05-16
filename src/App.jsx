@@ -1,17 +1,17 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-import Navbar from "./Navbar/Navbar";
-import Accueil from "./components/Accueil/Accueil";
-import AboutUs from "./components/AboutUs/AboutUs";
+// import Navbar from "./Navbar/Navbar";
+// import Accueil from "./components/Accueil/Accueil";
+// import AboutUs from "./components/AboutUs/AboutUs";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Footer from "./components/Footer/Footer";
+// import Footer from "./components/Footer/Footer";
 // import Anonce from "./components/Annonce/Annonce";
-import Prestations from "./components/Prestations/Prestations";
-import Contact from "./components/Contact/Contact";
+// import Contact from "./components/Contact/Contact";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index.jsx";
-import Annonce from "./components/Annonce/Annonce.jsx";
+import Login from "./Admin/Login.jsx";
+
 
 
 
@@ -28,9 +28,10 @@ const App = () => {
 
   return( 
       <>
-      
-      <RouterProvider router={router} />    
-    
+      <RouterProvider router={router} />  
+      <div className="text-white h-[100vh] flex justify-center items-center bg-cover"  style={{ backgroundImage: "url('../src/assets/pic-1.jpg')" }}>
+        <Login/>
+        </div>  
     </>
   );
 

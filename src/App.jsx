@@ -10,7 +10,7 @@ import "aos/dist/aos.css";
 // import Contact from "./components/Contact/Contact";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index.jsx";
-import Login from "./Admin/Login.jsx";
+
 
 
 
@@ -28,10 +28,7 @@ const App = () => {
 
   return( 
       <>
-      <RouterProvider router={router} />  
-      <div className="text-white h-[100vh] flex justify-center items-center bg-cover"  style={{ backgroundImage: "url('../src/assets/pic-1.jpg')" }}>
-        <Login/>
-        </div>  
+      <RouterProvider router={router} />    
     </>
   );
 

@@ -39,12 +39,12 @@ const Hero = () => {
               </div>
             </h1>
             <div className="flex justify-center gap-4">
-              <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-lg text-bold">
+              <a href="contact"><button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-lg text-bold">
                 Contactez-nous
-              </button>
-              <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-lg">
+              </button></a> 
+              <a href="services"><button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-lg">
                 Nos Services
-              </button>
+              </button></a> 
             </div>
           </div>
         </div>

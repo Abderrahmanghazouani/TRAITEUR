@@ -29,7 +29,7 @@ const Accueil = () => {
    photos
 
               <div className="flex flex-col ">
-                <span className="bg-clip-text text-5xl bg-white text-red-900 ">
+                <span className="bg-clip-text text-5xl bg-red-950 text-red-900">
                 N SAADI 
                 </span>
                 <span className="bg-clip-text taxt-3xl text-transparent bg-gradient-to-r from-primary to-secondary ">

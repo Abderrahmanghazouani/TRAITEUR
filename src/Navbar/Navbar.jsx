@@ -78,7 +78,7 @@ const Navbar = () => {
           <div className="flex justify-between items-center">
             <div>
               <a href="accueil" className="flex items-center gap-2">
-                <img src={Logo} alt="Logo" className="w-26 h-16" />
+                <img src={Logo} alt="Logo" className="w-36 h-16" />
                 {/* Foodie */}
               </a>
             </div>

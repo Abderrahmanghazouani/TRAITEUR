@@ -1,15 +1,13 @@
 // eslint-disable-next-line no-unused-vars
 import React from "react";
-// import Navbar from "./Navbar/Navbar";
-// import Accueil from "./components/Accueil/Accueil";
-// import AboutUs from "./components/AboutUs/AboutUs";
+
 import AOS from "aos";
 import "aos/dist/aos.css";
-// import Footer from "./components/Footer/Footer";
-// import Anonce from "./components/Annonce/Annonce";
-// import Contact from "./components/Contact/Contact";
+
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index.jsx";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Accueil from "./components/Accueil/Accueil.jsx";
 
 
 // import Login from "./Admin/Login.jsx";
@@ -32,7 +30,15 @@ const App = () => {
 
   return( 
       <>
-      <RouterProvider router={router} />  
+      <RouterProvider router={router} /> 
+      <Router>
+            <Routes>
+                {/* <Route path="/login" element={<Login/>} /> */}
+                <Route path="/accueil" element={<Accueil/>} />
+                {/* Add other routes here */}
+            </Routes>
+        </Router> 
+
     </>
   );
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Logo from "../assets/logo.jpg";
 import { IoMdContacts } from "react-icons/io";
 
@@ -28,10 +28,11 @@ const Menu = [
 
 const Navbar = () => {
   const [isNavbarFixed, setIsNavbarFixed] = useState(true); // Set to true initially
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 100 && location.pathname !== "/traiteur") {
         setIsNavbarFixed(true);
       } else {
         setIsNavbarFixed(false);
@@ -40,8 +41,27 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
+    // Retrieve and set scroll position on component mount
+    const storedScrollPosition = localStorage.getItem("scrollPosition");
+    if (storedScrollPosition) {
+      window.scrollTo(0, parseInt(storedScrollPosition));
+    }
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
+    };
+  }, [location.pathname]);
+
+  useEffect(() => {
+    // Store scroll position on component unmount
+    const handleBeforeUnload = () => {
+      localStorage.setItem("scrollPosition", window.scrollY);
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
 
@@ -57,7 +77,7 @@ const Navbar = () => {
         <div className="container">
           <div className="flex justify-between items-center">
             <div>
-              <a href="#" className="flex items-center gap-2">
+              <a href="accueil" className="flex items-center gap-2">
                 <img src={Logo} alt="Logo" className="w-16 h-16" />
                 {/* Foodie */}
               </a>

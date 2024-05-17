@@ -10,14 +10,14 @@ import Footer from "../components/Footer/Footer";
 import Login from "../Admin/Login";
 import Traiteur from "../serviceDetails/Traiteur";
 
-function AccueilLayout() {
+function AccueilLayout({ children }) {
   return (
     <div>
-      <Accueil />
-      <AboutUs />
-      <Prestations />
-      <Contact />
-      <Footer />
+      <Accueil/>
+      <AboutUs/>
+      <Prestations/>
+      <Contact/>
+      <Footer/>
     </div>
   );
 }

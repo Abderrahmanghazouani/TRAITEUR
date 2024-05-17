@@ -42,7 +42,7 @@ const AboutUs = () => {
               
                 <div>
                   <a href="about-us"><button className="bg-gradient-to-r from-primary to-secondary text-white py-2 px-4 rounded-full shadow-xl hover:shadow-md">
-                    Voir Plus
+                    Lire Plus
                   </button></a>
                 </div>
               </div>

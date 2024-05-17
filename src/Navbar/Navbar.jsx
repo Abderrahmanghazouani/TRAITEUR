@@ -50,7 +50,7 @@ const Navbar = () => {
       <header
         className={`${
           isNavbarFixed
-            ? "fixed top-0 left-0 w-full shadow-lg bg-white dark:bg-gray-900 dark:text-white duration-200 z-10"
+            ? "fixed top-0 left-0 w-full shadow-lg bg-[#e3dac9] dark:bg-gray-900 dark:text-white duration-200 z-10"
             : "relative"
         } py-2 px-4`}
       >

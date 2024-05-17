@@ -15,7 +15,7 @@ const Nous = () => {
 
   return (
     <>
-      <div className="min-h-[550px] mt-5 ">
+      <div className="min-h-[550px] mt-5">
         <div className="min-h-[550px] flex justify-center items-center backdrop-blur-xl py-10 sm:py-0 ">
           <div
             data-aos="slide-up"

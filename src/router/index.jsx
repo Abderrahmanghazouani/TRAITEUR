@@ -9,7 +9,26 @@ import Annonce from "../components/Annonce/Annonce";
 import Footer from "../components/Footer/Footer";
 import Login from "../Admin/Login";
 import Traiteur from "../serviceDetails/Traiteur";
+import FooterLayout from "../components/Footer/FooterLayout";
 
+function Layout({ children }) {
+  return (
+    <div>
+      <Navbar />
+      {children}
+      <FooterLayout />
+    </div>
+  );
+}
+function Layout2({ children }) {
+  return (
+    <div>
+      <Navbar />
+      {children}
+      <Footer />
+    </div>
+  );
+}
 function AccueilLayout({ children }) {
   return (
     <div>
@@ -17,23 +36,14 @@ function AccueilLayout({ children }) {
       <AboutUs/>
       <Prestations/>
       <Contact/>
-      <Footer/>
     </div>
   );
 }
 
 export const router = createBrowserRouter([
   {
-    element: <Navbar />,
+    element: <Layout />,
     children: [
-      {
-        path: "/",
-        element: <AccueilLayout />,
-      },
-      {
-        path: "/accueil",
-        element: <AccueilLayout />,
-      },
       {
         path: "/services",
         element: <Prestations />,
@@ -53,6 +63,19 @@ export const router = createBrowserRouter([
       {
         path: "/traiteur",
         element: <Traiteur/>,
+      },
+    ],
+  },
+  {
+    element: <Layout2 />,
+    children: [
+      {
+        path: "/",
+        element: <AccueilLayout />,
+      },
+      {
+        path: "/accueil",
+        element: <AccueilLayout />,
       },
     ],
   },

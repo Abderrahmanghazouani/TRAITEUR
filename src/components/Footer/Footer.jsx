@@ -6,13 +6,11 @@ import {
   FaPhone,
 } from "react-icons/fa";
 import footerLogo from "../../assets/logo.jpg";
-import { Outlet } from "react-router-dom";
-
 const Footer = () => {
 return (
   <>
   <div className="bg-[#e3dac9] dark:bg-gray-950 relative">
-    <section className="max-w-[1200px] mx-auto">
+    <section className="max-w-[1200px] mx-auto ">
       <div className="grid md:grid-cols-3 py-5">
         <div className="py-8 px-4 ">
           <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3">
@@ -29,10 +27,10 @@ return (
               </h1>
               {/* <ul className="list-disc list-inside"> */}
               <ul className="flex flex-col gap-3">
-                <li className="cursor-pointer"><a href="">Accueil</a></li>
-                <li className="cursor-pointer"><a href="">Qui sommes-nous?</a></li>
-                <li className="cursor-pointer"><a href="">Services</a></li>
-                <li className="cursor-pointer"><a href="">Nouvelle Annonce</a></li>
+                <li className="cursor-pointer"><a href="accueil">Accueil</a></li>
+                <li className="cursor-pointer"><a href="about-us">Qui sommes-nous?</a></li>
+                <li className="cursor-pointer"><a href="services">Services</a></li>
+                <li className="cursor-pointer"><a href="annonce">Nouvelle Annonce</a></li>
               </ul>
             </div>
           </div>

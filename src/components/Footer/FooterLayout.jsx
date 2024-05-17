@@ -6,7 +6,6 @@ import {
     FaPhone,
   } from "react-icons/fa";
   import footerLogo from "../../assets/logo.jpg";
-  import { Outlet } from "react-router-dom";
   
   const FooterLayout = () => {
   return (
@@ -29,10 +28,10 @@ import {
                 </h1>
                 {/* <ul className="list-disc list-inside"> */}
                 <ul className="flex flex-col gap-3">
-                  <li className="cursor-pointer"><a href="">Accueil</a></li>
-                  <li className="cursor-pointer"><a href="">Qui sommes-nous?</a></li>
-                  <li className="cursor-pointer"><a href="">Services</a></li>
-                  <li className="cursor-pointer"><a href="">Nouvelle Annonce</a></li>
+                  <li className="cursor-pointer"><a href="accueil">Accueil</a></li>
+                  <li className="cursor-pointer"><a href="about-us">Qui sommes-nous?</a></li>
+                  <li className="cursor-pointer"><a href="services">Services</a></li>
+                  <li className="cursor-pointer"><a href="annonce">Nouvelle Annonce</a></li>
                 </ul>
               </div>
             </div>

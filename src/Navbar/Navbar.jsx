@@ -18,6 +18,14 @@ const Menu = [
     id: 3,
     name: "NOS SERVICES",
     link: "/services",
+    submenu: [
+      { id: 1, name: "Traiteur", link: "/traiteur" },
+      { id: 2, name: "Patisserie", link: "/patisserie" },
+      { id: 3, name: "Art du table", link: "/table" },
+      { id: 4, name: "Decoration", link: "/decoration" },
+      { id: 5, name: "Amenagment", link: "/amenagment" },
+      { id: 6, name: "Autre", link: "/autre" },
+    ],
   },
   {
     id: 4,
@@ -28,6 +36,8 @@ const Menu = [
 
 const Navbar = () => {
   const [isNavbarFixed, setIsNavbarFixed] = useState(true); // Set to true initially
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [dropdownTimeout, setDropdownTimeout] = useState(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -41,7 +51,6 @@ const Navbar = () => {
 
     window.addEventListener("scroll", handleScroll);
 
-    // Retrieve and set scroll position on component mount
     const storedScrollPosition = localStorage.getItem("scrollPosition");
     if (storedScrollPosition) {
       window.scrollTo(0, parseInt(storedScrollPosition));
@@ -53,7 +62,6 @@ const Navbar = () => {
   }, [location.pathname]);
 
   useEffect(() => {
-    // Store scroll position on component unmount
     const handleBeforeUnload = () => {
       localStorage.setItem("scrollPosition", window.scrollY);
     };
@@ -64,6 +72,20 @@ const Navbar = () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
   }, []);
+
+  const handleMouseEnter = () => {
+    if (dropdownTimeout) {
+      clearTimeout(dropdownTimeout);
+    }
+    setDropdownVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setDropdownVisible(false);
+    }, 90); // 0.09second
+    setDropdownTimeout(timeout);
+  };
 
   return (
     <>
@@ -79,19 +101,42 @@ const Navbar = () => {
             <div>
               <a href="accueil" className="flex items-center gap-2">
                 <img src={Logo} alt="Logo" className="w-36 h-16" />
-                {/* Foodie */}
               </a>
             </div>
             <div className="flex justify-between items-center gap-4">
               <ul className="hidden sm:flex items-center gap-4">
                 {Menu.map((menu) => (
-                  <li key={menu.id}>
+                  <li
+                    key={menu.id}
+                    onMouseEnter={menu.submenu ? handleMouseEnter : undefined}
+                    onMouseLeave={menu.submenu ? handleMouseLeave : undefined}
+                    className="relative"
+                  >
                     <a
                       href={menu.link}
                       className="inline-block py-2 px-3 hover:text-yellow-500"
                     >
                       {menu.name}
                     </a>
+                    {menu.submenu && (
+                      <ul
+                        className={`absolute left-0 top-full mt-2 w-48 shadow-lg border rounded-lg z-20 bg-[#e3dac9] bg-opacity-80 transition-opacity duration-500 ${dropdownVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                      >
+                        {menu.submenu.map((sub, index) => (
+                          <li key={sub.id}>
+                            <a
+                              href={sub.link}
+                              className="block py-2 px-4 hover:bg-gray-200"
+                            >
+                              {sub.name}
+                            </a>
+                            {index < menu.submenu.length - 1 && (
+                              <hr className="border-t-2 border-[#FFA801]" />
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
                 ))}
               </ul>

@@ -8,6 +8,7 @@ import "aos/dist/aos.css";
 // import Footer from "./components/Footer/Footer";
 // import Anonce from "./components/Annonce/Annonce";
 // import Contact from "./components/Contact/Contact";
+import Demandes from "./components/Demande/Demandes";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index.jsx";
 
@@ -26,6 +27,7 @@ const App = () => {
   return( 
       <>
       <RouterProvider router={router} />  
+      <Demandes/>
     </>
   );
 

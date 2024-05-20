@@ -6,8 +6,6 @@ import "aos/dist/aos.css";
 
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index.jsx";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Accueil from "./components/Accueil/Accueil.jsx";
 
 
 // import Login from "./Admin/Login.jsx";
@@ -31,13 +29,7 @@ const App = () => {
   return( 
       <>
       <RouterProvider router={router} /> 
-      <Router>
-            <Routes>
-                {/* <Route path="/login" element={<Login/>} /> */}
-                <Route path="/accueil" element={<Accueil/>} />
-                {/* Add other routes here */}
-            </Routes>
-        </Router> 
+
 
     </>
   );

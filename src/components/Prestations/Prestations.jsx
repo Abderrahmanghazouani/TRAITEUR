@@ -53,7 +53,7 @@ const CelebrationImg = [
 
 const Celebration = () => {
   return (
-    <div className="py-10 bg-red-100">
+    <div className="py-10 bg-white">
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <p className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
@@ -67,7 +67,7 @@ const Celebration = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center">
           {CelebrationImg.map((service) => (
             <a key={service.id} href={service.link}>
-              <div className="rounded-lg bg-white shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:bg-gray-300" style={{ width: '280px', height: '280px' }}>
+              <div className="rounded-lg bg-white shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:bg-[#e3dac9]" style={{ width: '280px', height: '280px' }}>
                 <div className="h-48 overflow-hidden">
                   <img src={service.img} alt={service.name} className="w-full h-full object-cover" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>

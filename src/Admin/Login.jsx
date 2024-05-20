@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AiOutlineUnlock, AiOutlineWarning } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
 import backgroundImage from "../assets/pic-2.jpg";
-import axios from "../api/axios";
+import  { AxiosAdmin } from "../api/axios";
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
@@ -10,29 +10,20 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    // const handleUsernameChange = (e) => {
-    //     setUsername(e.target.value);
-    // };
 
-    // const handlePasswordChange = (e) => {
-    //     setPassword(e.target.value);
-    // };
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     // Handle login logic here
-    //     console.log('Username:', username);
-    //     console.log('Password:', password);
-    // };
 
     const handleLogin = async (event) =>{
         event.preventDefault();
 
+       
+
         try {
-             await axios.post('/login', { email, password,});
+             await AxiosAdmin.get('/sanctum/csrf-cookie');
+             await AxiosAdmin.post('/login', { email, password,});
              setEmail("")
              setPassword("")
-             navigate("/")
+             navigate("/about-us");
          
             // Handle successful login (e.g., redirect, store token)
         } catch (error) {
@@ -55,7 +46,7 @@ const Login = () => {
                             value={email}
                             onChange={(e)=> setEmail(e.target.value)}
                             className="block w-72 py-2.3 text-sm text-white bg-transparent border-o border-b-2 border-gray-300 appearance-none dark:focus:border-red-600 focus:outline-none focus:ring-0 focus:text-white focus:border-red-700 peer"
-                            placeholder="Email"
+                            placeholder=""
                         />
                         <label
                             htmlFor=""
@@ -73,7 +64,7 @@ const Login = () => {
                             onChange={(e)=> setPassword(e.target.value)}
                             className="block w-72 py-2.3 text-sm text-white bg-transparent border-o border-b-2 border-gray-300 appearance-none dark:focus:border-red-600 focus:outline-none focus:ring-0 focus:text-white focus:border-red-700 peer"
                           
-                            placeholder="Password"
+                            placeholder=""
                         />
                         <label
                             htmlFor=""

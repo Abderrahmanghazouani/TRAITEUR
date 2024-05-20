@@ -1,27 +1,25 @@
 
 import {
-  FaWhatsapp,
-  FaInstagram,
-  FaLocationArrow,
-  FaPhone,
-} from "react-icons/fa";
-import footerLogo from "../../assets/logo.jpg";
-
-import { GrFormNextLink } from "react-icons/gr";
-import { MdEmail } from "react-icons/md";
-
-const Footer = () => {
+    FaWhatsapp,
+    FaInstagram,
+    FaLocationArrow,
+    FaPhone,
+  } from "react-icons/fa";
+  import footerLogo from "../../assets/logo.jpg";
+  
+  const FooterLayout = () => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-950 relative">
+    <>
+    <div className="bg-[#e3dac9] dark:bg-gray-950 relative">
       <section className="max-w-[1200px] mx-auto">
         <div className="grid md:grid-cols-3 py-5">
           <div className="py-8 px-4 ">
             <h1 className="sm:text-3xl text-xl font-bold sm:text-left text-justify mb-3 flex items-center gap-3">
-              <img src={footerLogo} alt="Logo" className="w-70 h-30 border border-bold" />
+              <img src={footerLogo} alt="Logo" className="w-70 h-30" />
               {/* Traiteur */}
             </h1>
           </div>
-
+  
           <div className="grid grid-cols-2 sm:grid-cols-3 col-span-2 md:pl-10 ">
             <div className="">
                <div className="py-8 px-4 ">
@@ -30,30 +28,14 @@ const Footer = () => {
                 </h1>
                 {/* <ul className="list-disc list-inside"> */}
                 <ul className="flex flex-col gap-3">
-                
-                  <div className="flex items-center gap-3 mt-3">
-                  <GrFormNextLink />
-                <li className="cursor-pointer" > <a href="">Accueil</a></li>
-                  </div>
-
-                  <div className="flex items-center gap-3 mt-3">
-                  <GrFormNextLink />
-                <li className="cursor-pointer" > <a href="">Qui sommes-nous?</a></li>
-                  </div>
-
-                  <div className="flex items-center gap-3 mt-3">
-                  <GrFormNextLink />
-                <li className="cursor-pointer" > <a href="">Services</a></li>
-                  </div>
-
-                  <div className="flex items-center gap-3 mt-3">
-                  <GrFormNextLink />
-                <li className="cursor-pointer" > <a href="">Nouvelle Annonce</a></li>
-                  </div>
+                  <li className="cursor-pointer"><a href="accueil">Accueil</a></li>
+                  <li className="cursor-pointer"><a href="about-us">Qui sommes-nous?</a></li>
+                  <li className="cursor-pointer"><a href="services">Services</a></li>
+                  <li className="cursor-pointer"><a href="annonce">Nouvelle Annonce</a></li>
                 </ul>
               </div>
             </div>
-
+  
             <div className="">
               <div className="py-8 px-4 ">
                 <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
@@ -68,13 +50,7 @@ const Footer = () => {
                     <FaPhone />
                     <p>+212 123456789</p>
                   </div>
-
-                  <div className="flex items-center gap-3 mt-3">
-                    <MdEmail/>
                   <p>abdo@gmail.com</p>
-                  </div>
-
-                  
                   <div className="flex items-center gap-3 mt-6">
                     <a
                       href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME/"
@@ -97,23 +73,14 @@ const Footer = () => {
               </div>
             </div>
             <div className="">
-
-
-        
+            </div>
           </div>
         </div>
-
-      </div>
-      <div className="absolute bottom-4 right-4">
-        <a href="admin"><button className="bg-red-600 hover:bg-red-400 text-white font-bold py-2 px-4 rounded">
-          Administration
-        </button></a>
-      </div>
-    </section>
-  </div>
-
-);
-
-};
-
-export default Footer;
+      </section>
+    </div>
+    </>
+  );
+  };
+  
+  export default FooterLayout;
+  

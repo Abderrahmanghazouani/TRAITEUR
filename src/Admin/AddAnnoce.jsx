@@ -1,8 +1,7 @@
 
 
 
-
-const NewAnnouncementForm = () => {
+const AddAnnonce= () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Ajouter le code pour gérer l'envoi du formulaire (ajouter, modifier, supprimer)
@@ -64,8 +63,8 @@ const NewAnnouncementForm = () => {
           <button
             type="submit"
             className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md"
-          >
-            Ajouter
+          > Ajouter
+           
           </button>
           <button
             type="button"
@@ -85,4 +84,4 @@ const NewAnnouncementForm = () => {
   );
 };
 
-export default NewAnnouncementForm;
+export default AddAnnonce;

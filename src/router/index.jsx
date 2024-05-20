@@ -10,7 +10,7 @@ import Footer from "../components/Footer/Footer";
 import Login from "../Admin/Login";
 import Traiteur from "../serviceDetails/Traiteur";
 import FooterLayout from "../components/Footer/FooterLayout";
-import DemandeAnnonce from "../Admin/DemandeAnnonce";
+
 
 function Layout({ children }) {
   return (
@@ -83,9 +83,5 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     element: <Login/>,
-  },
-  {
-    path: "/Demande-Annonce",
-    element: <DemandeAnnonce/>,
   },
 ]);

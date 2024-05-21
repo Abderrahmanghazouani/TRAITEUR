@@ -12,7 +12,7 @@ import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-950 relative">
+    <div className="bg-[#e3dac9] dark:bg-gray-950 relative">
       <section className="max-w-[1200px] mx-auto">
         <div className="grid md:grid-cols-3 py-5">
           <div className="py-8 px-4 ">
@@ -33,22 +33,22 @@ const Footer = () => {
                 
                   <div className="flex items-center gap-3 mt-3">
                   <GrFormNextLink />
-                <li className="cursor-pointer" > <a href="">Accueil</a></li>
+                <li className="cursor-pointer" > <a href="accueil">Accueil</a></li>
                   </div>
 
                   <div className="flex items-center gap-3 mt-3">
                   <GrFormNextLink />
-                <li className="cursor-pointer" > <a href="">Qui sommes-nous?</a></li>
+                <li className="cursor-pointer" > <a href="about-us">Qui sommes-nous?</a></li>
                   </div>
 
                   <div className="flex items-center gap-3 mt-3">
                   <GrFormNextLink />
-                <li className="cursor-pointer" > <a href="">Services</a></li>
+                <li className="cursor-pointer" > <a href="services">Services</a></li>
                   </div>
 
                   <div className="flex items-center gap-3 mt-3">
                   <GrFormNextLink />
-                <li className="cursor-pointer" > <a href="">Nouvelle Annonce</a></li>
+                <li className="cursor-pointer" > <a href="annonce">Nouvelle Annonce</a></li>
                   </div>
                 </ul>
               </div>

@@ -73,19 +73,19 @@ export const router = createBrowserRouter([
         path: "/demande-annonce",
         element: <DemandeAnnonce/>,
       },
-      //Annonces
-      // {
-      //   path: "/add-annonce",
-      //   element: <AddAnnonce/>,
-      // },
-      // {
-      //   path: "/annonce-list",
-      //   element: <AnnonceList/>,
-      // },
-      // {
-      //   path: "editannonce/:id/edit",
-      //   element: <EditAnnonce/>,
-      // },
+      // Annonces
+      {
+        path: "/add-annonce",
+        element: <AddAnnonce/>,
+      },
+      {
+        path: "/annonce-list",
+        element: <AnnonceList/>,
+      },
+      {
+        path: "editannonce/:id/edit",
+        element: <EditAnnonce/>,
+      },
       {
       path: "/list-demandes",
       element: <ListDemande/>,

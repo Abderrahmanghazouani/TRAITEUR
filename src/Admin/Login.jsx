@@ -23,7 +23,7 @@ const Login = () => {
              await AxiosAdmin.post('/login', { email, password,});
              setEmail("")
              setPassword("")
-             navigate("/about-us");
+             navigate("/demande-annonce");
          
             // Handle successful login (e.g., redirect, store token)
         } catch (error) {
@@ -76,9 +76,9 @@ const Login = () => {
                     </div>
 
                     <div>
-                        <button type="submit" className="w-full mb-4 text-[18px] mt-6 rounded-full bg-white text-emerald-800 hover:bg-emerald-600 hover:text-white py-2 transition-colors">
+                       <a href="admin/demande-annonce"><button type="submit" className="w-full mb-4 text-[18px] mt-6 rounded-full bg-white text-emerald-800 hover:bg-emerald-600 hover:text-white py-2 transition-colors">
                             Login
-                        </button>
+                        </button></a>
                     </div>
                 </form>
             </div>

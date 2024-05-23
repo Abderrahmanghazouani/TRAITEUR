@@ -10,6 +10,10 @@ import Footer from "../components/Footer/Footer";
 import Login from "../Admin/Login";
 import Traiteur from "../serviceDetails/Traiteur";
 import FooterLayout from "../components/Footer/FooterLayout";
+import DemandeAnnonce from "../Admin/DemandeAnnonce";
+import ListDemande from "../Admin/ListDemande";
+
+
 
 
 function Layout({ children }) {
@@ -65,6 +69,27 @@ export const router = createBrowserRouter([
         path: "/traiteur",
         element: <Traiteur/>,
       },
+      {
+        path: "/demande-annonce",
+        element: <DemandeAnnonce/>,
+      },
+      //Annonces
+      // {
+      //   path: "/add-annonce",
+      //   element: <AddAnnonce/>,
+      // },
+      // {
+      //   path: "/annonce-list",
+      //   element: <AnnonceList/>,
+      // },
+      // {
+      //   path: "editannonce/:id/edit",
+      //   element: <EditAnnonce/>,
+      // },
+      {
+      path: "/list-demandes",
+      element: <ListDemande/>,
+    },
     ],
   },
   {

@@ -4,7 +4,7 @@ import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import pic3 from "../../assets/pic-5.jpg";
-import { AxiosAdmin } from '../../api/axios';
+import axios from "axios";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -18,6 +18,9 @@ const ContactPage = () => {
     type_de_celebration: ''
   });
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -26,15 +29,17 @@ const ContactPage = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    setError(null);
 
     try {
-      const clientResponse = await AxiosAdmin.post('/api/clients', {
+      const clientResponse = await axios.get('/api/clients', {
         nom: formData.nom,
         numero: formData.numero,
         email: formData.email
       });
 
-      const clientId = clientResponse.data.client.id;
+      const clientId = clientResponse.data.id;
 
       const requestData = {
         client_id: clientId,
@@ -45,7 +50,7 @@ const ContactPage = () => {
         type_de_celebration: formData.type_de_celebration
       };
 
-      const demandeResponse = await AxiosAdmin.post('/api/demandes', requestData);
+      const demandeResponse = await axios.get('http://127.0.0.1:8000/api/demandes', requestData);
 
       console.log('Demande créée avec succès:', demandeResponse.data);
 
@@ -63,6 +68,9 @@ const ContactPage = () => {
       navigate('/list-demandes'); // Redirection vers la liste des demandes
     } catch (error) {
       console.error('Erreur lors de la création de la demande:', error);
+      setError('Une erreur est survenue. Veuillez réessayer.');
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -123,6 +131,8 @@ const ContactPage = () => {
 
         <div className="mt-8">
           <form className="grid grid-cols-2 gap-8" onSubmit={handleSubmit}>
+            {error && <div className="col-span-2 text-red-500">{error}</div>}
+            
             <div>
               <label htmlFor="nom" className="block text-xl text-black font-bold">Nom :</label>
               <input
@@ -242,8 +252,9 @@ const ContactPage = () => {
               <button
                 type="submit"
                 className="w-full bg-yellow-500 text-white py-2 rounded-md font-bold hover:bg-yellow-600 focus:outline-none focus:bg-yellow-600"
+                disabled={loading}
               >
-                Envoyer
+                {loading ? 'Envoi en cours...' : 'Envoyer'}
               </button>
             </div>
           </form>

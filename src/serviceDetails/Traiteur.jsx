@@ -56,7 +56,7 @@ function ImageSlider2() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 3000); // Change image every 3 seconds
+    }, 2000); // Change image every 2 seconds
 
     return () => clearInterval(interval);
   }, []);

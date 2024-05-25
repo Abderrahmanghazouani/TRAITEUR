@@ -4,7 +4,7 @@ import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
 import pic3 from "../../assets/pic-5.jpg";
-import { AxiosAdmin } from '../../api/axios';
+import axios from "axios";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -33,7 +33,7 @@ const ContactPage = () => {
     setError(null);
 
     try {
-      const clientResponse = await AxiosAdmin.post('/api/clients', {
+      const clientResponse = await axios.get('/api/clients', {
         nom: formData.nom,
         numero: formData.numero,
         email: formData.email
@@ -50,7 +50,7 @@ const ContactPage = () => {
         type_de_celebration: formData.type_de_celebration
       };
 
-      const demandeResponse = await AxiosAdmin.post('/api/demandes', requestData);
+      const demandeResponse = await axios.get('http://127.0.0.1:8000/api/demandes', requestData);
 
       console.log('Demande créée avec succès:', demandeResponse.data);
 

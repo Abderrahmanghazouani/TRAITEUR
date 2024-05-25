@@ -11,7 +11,7 @@ import Login from "../Admin/Login";
 import Traiteur from "../serviceDetails/Traiteur";
 import FooterLayout from "../components/Footer/FooterLayout";
 import DemandeAnnonce from "../Admin/DemandeAnnonce";
-import ListDemande from "../Admin/Demandes/ListDemande";
+import ListDemande from "../Admin/Demandes/ListDemandes";
 import AddAnnonce from "../Admin/Annonce/AddAnnoce";
 import EditAnnonce  from "../Admin/Annonce/EditAnnonce";
 import AnnonceList from "../Admin/Annonce/AnnonceList";

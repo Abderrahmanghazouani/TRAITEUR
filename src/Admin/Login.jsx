@@ -63,7 +63,6 @@ const Login = () => {
                             value={password}
                             onChange={(e)=> setPassword(e.target.value)}
                             className="block w-72 py-2.3 text-sm text-white bg-transparent border-o border-b-2 border-gray-300 appearance-none dark:focus:border-red-600 focus:outline-none focus:ring-0 focus:text-white focus:border-red-700 peer"
-                          
                             placeholder=""
                         />
                         <label

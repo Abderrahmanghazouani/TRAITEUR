@@ -33,15 +33,15 @@ const AboutUs = () => {
               </div>
               {/* text content section */}
               <div className="flex flex-col justify-center gap-6 sm:pt-0">
-                <h1 className="text-3xl sm:text-4xl font-bold">
+                <h1 className="text-3xl sm:text-4xl font-bold font-mono">
                   Qui sommes-nous?
                 </h1>
-                <p className="text-sm text-gray-500 tracking-wide leading-5">
+                <p className="text-sm text-gray-500 tracking-wide leading-5 font-serif">
                 Chez <b>SAADI</b>, notre passion est d'aller au-delà de vos attentes pour créer des expériences exceptionnelles. Depuis notre création, nous nous sommes engagés à offrir à nos clients un service de qualité supérieure, une créativité sans limite et une attention méticuleuse aux détails.
                 </p>
               
                 <div>
-                  <a href="about-us"><button className="bg-gradient-to-r from-primary to-secondary text-white py-2 px-4 rounded-full shadow-xl hover:shadow-md">
+                  <a href="about-us"><button className="bg-gradient-to-r from-primary to-secondary font-mono text-white py-2 px-4 rounded-lg shadow-xl hover:shadow-md">
                     Lire Plus
                   </button></a>
                 </div>

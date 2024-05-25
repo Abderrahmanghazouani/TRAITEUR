@@ -11,6 +11,7 @@ export default {
     extend: {
       fontFamily: {
         sans: ["Poppins", "sans-serif"],
+        poetsen: ['Poetsen One', 'sans-serif'],
       },
       colors: {
         primary: "#ffc001",

@@ -10,8 +10,9 @@ const AddAnnonce = () => {
   const [titre, setTitle] = useState('');
   const [date, setDate] = useState('');
   const [description, setDescription] = useState('');
-  const [image, setImage] = useState(null); // Pour le champ de fichier, utilisez null comme valeur initiale
+  const [image, setImage] = useState(''); // Pour le champ de fichier, utilisez null comme valeur initiale
   const[message, setMessage]= useState('');
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
   const uploadAnnonce= async()=>{
     console.log(image)
@@ -21,9 +22,14 @@ const AddAnnonce = () => {
     formData.append('description',description);
     formData.append('image', image);
     const responce= await axios.post("http://127.0.0.1:8000/api/annonces", formData, {
-        headers:{'Content-Type':"multipart/form-data"},
+        headers:{'Content-Type':"multipart/form-data",
+        'Accept': 'application/json',
+        'X-CSRF-TOKEN': csrfToken,
+        },
+
         withXSRFToken: true,
         withCredentials:true,
+      
     } );
           if(responce){
           console.log(responce)
@@ -37,7 +43,7 @@ const AddAnnonce = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     await uploadAnnonce();
-  };
+  }
 
   return (
     <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">

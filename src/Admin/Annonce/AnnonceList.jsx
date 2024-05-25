@@ -1,78 +1,84 @@
-import React, { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import { AxiosAdmin } from "../../api/axios";
 import axios from "axios";
 
+function AnnonceList() {
+  const [annonce, setAnnonce] = useState([]);
 
+  useEffect(() => {
+    const getAnnonce = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8000/api/annonces");
+        setAnnonce(response.data.annonces);
+      } catch (error) {
+        console.error("Error fetching annonces:", error);
+      }
+    };
+    getAnnonce();
+  }, []);
 
-function AnnonceList (){
-    const[annonce, setAnnonce]= useState([]);
-
-    useEffect( ()=>{
-        const getAnnonce= ()=>{
-            fetch("http://127.0.0.1:8000/api/annonces")
-            .then(res=>{ return res.json()})
-            .then(response=>{ 
-                console.log(response.annonces)
-                setAnnonce(response.annonces)
-            })
-            .catch(error=>{ console.log(error)});
-        }
-        getAnnonce();
-    },[]);
-    const deleteAnnonce = (id) => {
-        axios.delete('http://127.0.0.1:8000/api/annoncedelete/'+id).then(function(response){
-            console.log(response.data);
-            alert("Successfully Deleted");
-        });
+  const deleteAnnonce = async (id) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8000/api/annoncedelete/${id}`);
+      alert("Successfully Deleted");
+      setAnnonce(annonce.filter((item) => item.id !== id));
+    } catch (error) {
+      console.error("Error deleting annonce:", error);
     }
+  };
 
-
-return(
-    <React.Fragment>
-    <div className="container container_overflow">
-        <div className="row">
-            <div className="col-12">
-                <h5 className="mb-4">Liste des Annonces</h5> 
-                <p className="text-danger"> </p>                 
-                        <table className="table table-bordered">
-                        <thead>
-                        <tr>
-                        <th scope="col">Sr.No</th>
-                        <th scope="col">Annonce Title</th>
-                        <th scope="col">Annonce Date</th>
-                        <th scope="col">Annonce Description</th>
-                        <th scope="col">Annonce Image</th>
-                        <th scope="col" width="200">Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            {
-                                annonce.map((pdata, index)=>(
-                                    <tr key={index}>
-                                    <td>{index+1 } </td>
-                                    <td>{pdata.titre } </td>
-                                    <td>{pdata.date } </td>
-                                    <td>{pdata.description } </td>
-                                    <td><img src={`http://127.0.0.1:8000/storage/${pdata.image}`} alt="" height={50} width={90} /></td>
-                                    <td>
-                                        <Link to={`/editannonce/${pdata.id}/edit`} className="btn btn-success mx-2">Edit</Link>
-                                        <button onClick={() => deleteAnnonce(pdata.id)} className="btn btn-danger">Delete</button>
-                                    </td>
-                                    </tr>
-                                ))
-                            }
-                       
-                                                        
-                        </tbody>
-                        </table>  
-            </div>
-        </div>
+  return (
+    <div className="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
+      <h5 className="text-2xl font-bold mb-4 text-center">Liste des Annonces</h5>
+      <div className="overflow-x-auto bg-gray-100">
+        <table className="w-full">
+          <thead className="bg-[#e3dac9]">
+            <tr>
+              <th className="px-4 py-2 border font-bold">Sr.No</th>
+              <th className="px-4 py-2 border font-bold">Titre</th>
+              <th className="px-4 py-2 border font-bold">Date</th>
+              <th className="px-4 py-2 border font-bold">Description</th>
+              <th className="px-4 py-2 border font-bold">Image</th>
+              <th className="px-4 py-2 border font-bold">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {annonce.map((pdata, index) => (
+              <tr key={pdata.id}>
+                <td className="border px-4 py-2">{index + 1}</td>
+                <td className="border px-4 py-2">{pdata.titre}</td>
+                <td className="border px-4 py-2">{pdata.date}</td>
+                <td className="border px-4 py-2">{pdata.description}</td>
+                <td className="border px-4 py-2">
+                  <img
+                    src={`http://127.0.0.1:8000/storage/${pdata.image}`}
+                    alt=""
+                    className="h-10 w-16 object-cover"
+                  />
+                </td>
+                <td className="border px-4 py-2">
+                  <div className="flex">
+                    <Link
+                      to={`/editannonce/${pdata.id}/edit`}
+                      className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md mr-2 mb-2"
+                    >
+                      Edit
+                    </Link>
+                    <button
+                      onClick={() => deleteAnnonce(pdata.id)}
+                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md mb-2"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-</React.Fragment>
-
-);
-
+  );
 }
 
 export default AnnonceList;

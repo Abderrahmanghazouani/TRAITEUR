@@ -56,18 +56,18 @@ const Celebration = () => {
     <div className="py-10 bg-white">
       <div className="container mx-auto">
         <div className="text-center mb-10">
-          <p className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+          <p className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary font-mono">
             NOS SERVICES
           </p>
-          <h1 className="text-3xl font-bold">SERVICES</h1>
-          <p className="text-sm  text-gray-500">
+          <h1 className="text-3xl font-bold font-mono">SERVICES</h1>
+          <p className="text-lg font-bold  text-gray-500 font-serif ">
            Vous êtes à la recherche d’un traiteur pour un évènement à Marrakech ou partout au Maroc N Saadi évents vous propose des menus adaptés à votre thème, vos envies et votre budget
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center font-mono">
           {CelebrationImg.map((service) => (
             <a key={service.id} href={service.link}>
-              <div className="rounded-lg bg-white shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:bg-[#e3dac9] hover:text-[#CA8A04]" style={{ width: '280px', height: '280px' }}>
+              <div className="rounded-lg bg-white shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:bg-[#e3dac9] hover:text-yellow-500" style={{ width: '280px', height: '280px' }}>
                 <div className="h-48 overflow-hidden">
                   <img src={service.img} alt={service.name} className="w-full h-full object-cover" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>

@@ -68,13 +68,13 @@ const ContactPage = () => {
 
   return (
     <div
-      className="bg-cover bg-center"
-      style={{ backgroundImage: `url(${pic3})` }}
+      className="bg-cover bg-center bg-gray"
+      // style={{ backgroundImage: `url(${pic3})` }}
     >
       <div className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-5xl font-bold mb-4 text-yellow-500 text-center">Contactez-nous</h1>
-          <p className="mb-4 text-black text-center text-2xl font-bold">
+          <h1 className=" font-mono text-5xl font-bold mb-4 text-yellow-500 text-center">Contactez-nous</h1>
+          <p className="mb-4 text-black text-center text-2xl font-bold font-serif">
             Pour toute demande, n’hésitez pas à compléter le formulaire ci-dessous. Nous vous répondrons dans les meilleurs délais.
           </p>
         </div>

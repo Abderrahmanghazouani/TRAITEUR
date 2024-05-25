@@ -1,51 +1,78 @@
-import bgImg from "../../assets/pic-3.jpg";
+import { useState, useEffect } from 'react';
+import bgImg1 from "../../assets/pic-4.jpg";
+import bgImg2 from "../../assets/pic-2.jpg";
+import bgImg3 from "../../assets/pic-3.jpg";
 
 const Accueil = () => {
-  const bgImage = {
-    backgroundImage: `url(${bgImg})`,
+  const [bgImages, setBgImages] = useState([bgImg1, bgImg2, bgImg3]);
+  const [currentBgIndex, setCurrentBgIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prevIndex) => (prevIndex + 1) % bgImages.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [bgImages.length]);
+
+  const bgImageStyle = {
+    backgroundImage: `url(${bgImages[currentBgIndex]})`,
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
-    minHeight: "100vh",
+    margin: "20px", // Espace autour de l'image
+    minHeight: "calc(100vh - 20px)", // Hauteur moins la marge
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    color: "white",
     textAlign: "center",
+  };
+
+  const containerStyle = {
+    backgroundColor: "#e3dac9", // Fond de couleur autour des images
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "calc(100vh - 20px)", // Hauteur moins la marge
+    padding: "10px", // Espace autour des images
   };
 
   return (
     <>
-      <div className="bg-gray-100 dark:bg-gray-950 dark:text-white duration-200" style={bgImage}>
-        <div className="container">
+      <div className='bg-[#e3dac9]'>
+        <div className="container" style={containerStyle}>
           <div
             data-aos="zoom-out"
             data-aos-duration="400"
             data-aos-once="true"
-            className="py-12"
+            className="rounded-lg drop-shadow-[-10px_10px_12px_rgba(0,0,0,1)] border-2 border-yellow-500"
+            style={bgImageStyle}
           >
-            <h1 className="text-3xl font-bold mb-4 text-transparent bg-black bg-opacity-70 inline-block px-4 py-2 rounded-lg text-white">
-            Pour l’organisation d’un évènement personnel , faites appel aux professionnels 
-   photos
-
-              <div className="flex flex-col ">
+            <h1 className=" text-3xl font-bold mb-4 mx-10 text-transparent bg-black bg-opacity-70 text-center
+             inline-block rounded-lg text-white border-double border-8 font-serif">
+              Pour l’organisation d’un évènement personnel, faites appel aux professionnels photos
+              <div className="flex flex-col">
                 <span className="bg-clip-text text-5xl bg-red-950 text-red-900">
-                N SAADI 
+                  N SAADI 
                 </span>
-                <span className="bg-clip-text taxt-3xl text-transparent bg-gradient-to-r from-primary to-secondary ">
-                 EVENTS
+                <span className="bg-clip-text text-3xl text-transparent bg-gradient-to-r from-primary to-secondary">
+                  EVENTS
                 </span>
                 afin de bénéficier du meilleur service 
               </div>
+              <div className="flex justify-center gap-4 mb-4"> {/* Nouveau conteneur pour les boutons */}
+                <a href="contact">
+                  <button className=" font-mono bg-gradient-to-r from-primary to-secondary hover:scale-105 hover:border-2 hover:border-double duration-200 text-white py-2 px-4 rounded-lg text-lg">
+                    Contactez-nous
+                  </button>
+                </a> 
+                <a href="services">
+                  <button className="font-mono bg-gradient-to-r from-primary to-secondary hover:scale-105 hover:border-2 hover:border-double duration-200 text-white py-2 px-4 rounded-lg text-lg">
+                    Nos Services
+                  </button>
+                </a> 
+              </div>
             </h1>
-            <div className="flex justify-center gap-4">
-              <a href="contact"><button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-lg text-bold">
-                Contactez-nous
-              </button></a> 
-              <a href="services"><button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-lg">
-                Nos Services
-              </button></a> 
-            </div>
           </div>
         </div>
       </div>

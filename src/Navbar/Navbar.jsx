@@ -106,8 +106,8 @@ const Navbar = () => {
                 <img src={Logo} alt="Logo" className="w-36 h-16" />
               </a>
             </div>
-            <div className="flex justify-between items-center gap-4">
-              <ul className="hidden sm:flex items-center gap-4">
+            <div className="flex justify-between items-center gap-4 font-mono font-bold">
+              <ul className="hidden sm:flex items-center gap-4 ">
                 {Menu.map((menu) => (
                   <li
                     key={menu.id}
@@ -144,7 +144,7 @@ const Navbar = () => {
                 ))}
               </ul>
               <a href="contact">
-                <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 duration-200 text-white py-2 px-4 rounded-full flex items-center gap-3">
+                <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 hover:border-2 hover:border-double hover:border-black duration-200 text-white py-2 px-4 rounded-lg flex items-center gap-3 font-mono">
 
                   Contact
                   <IoMdContacts className="text-xl text-white drop-shadow-sm cursor-pointer" />

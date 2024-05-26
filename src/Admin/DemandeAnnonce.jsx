@@ -8,8 +8,14 @@ const DemandeAnnonce = () => {
         <div className="space-y-4">
  
           <a href="list-demandes">
-         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg">
+         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg m-1">
             Liste de demandes
+          </button>
+          </a>
+
+          <a href="list-clients">
+         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-lg ">
+            Liste de clients
           </button>
           </a>
           

@@ -10,7 +10,7 @@ const ListDemandes = () => {
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/demandes');
-                console.log('Fetched demandes:', response.data); // Add this line for debugging
+                console.log('Fetched demandes:', response.data);
                 setDemandes(response.data);
                 setLoading(false);
             } catch (error) {
@@ -25,8 +25,8 @@ const ListDemandes = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`/api/demandes/${id}`);
-            setDemandes(demandes.filter(demande => demande.id !== id));
+            await axios.delete(`http://127.0.0.1:8000/api/demandes/${id}`);
+            setDemandes(demandes.filter(demande => demande.idDemande !== id));
         } catch (error) {
             console.error('Error deleting demande:', error);
         }
@@ -45,21 +45,33 @@ const ListDemandes = () => {
             <h1 className="text-2xl font-bold mb-4">List of Demandes</h1>
             <ul>
                 {demandes.map(demande => (
-                    <li key={demande.id} className="border-b py-2">
+                    <li key={demande.idDemande} className="border-b py-2">
                         <div>
-                            <strong>Id:</strong> {demande.id}
+                            <strong>Client:</strong>
+                            <div><strong>Nom:</strong> {demande.client.nom}</div>
+                            <div><strong>Email:</strong> {demande.client.email}</div>
+                            <div><strong>Numero:</strong> {demande.client.numero}</div>
                         </div>
                         <div>
-                            <strong>Name:</strong> {demande.name}
+                            <strong>Type de Celebration:</strong> {demande.type_de_celebration}
+                        </div>
+                        <div>
+                            <strong>Lieu:</strong> {demande.lieu}
+                        </div>
+                        <div>
+                            <strong>Date Creation:</strong> {demande.date_creation}
+                        </div>
+                        <div>
+                            <strong>Nombre Personne:</strong> {demande.nombre_personne}
                         </div>
                         <div>
                             <strong>Description:</strong> {demande.description}
                         </div>
                         <button
                             className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded mt-2"
-                            onClick={() => handleDelete(demande.id)}
+                            onClick={() => handleDelete(demande.idDemande)}
                         >
-                            Delete
+                            Supprimer
                         </button>
                     </li>
                 ))}

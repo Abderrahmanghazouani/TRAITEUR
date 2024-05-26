@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import axios from "axios";
+import axios from 'axios';
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({
@@ -16,9 +15,7 @@ const ContactPage = () => {
 
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
-    const [demandeSent, setDemandeSent] = useState(false); // Declared here
-
-    const navigate = useNavigate();
+    const [demandeSent, setDemandeSent] = useState(false);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -30,33 +27,8 @@ const ContactPage = () => {
         setError(null);
 
         try {
-            // Create or fetch the client
-            let clientId = null;
-            const clientResponse = await axios.post('http://127.0.0.1:8000/api/clients', {
-                nom: formData.nom,
-                numero: formData.numero,
-                email: formData.email
-            });
-            
-            if (clientResponse.data && clientResponse.data.idClient) {
-                clientId = clientResponse.data.idClient;
-            } else {
-                throw new Error('Client ID not found in the response');
-            }
-
-            // Create the demande
-            const demandeResponse = await axios.post('http://127.0.0.1:8000/api/demandes', {
-                client_id: clientId,
-                description: formData.description,
-                lieu: formData.lieu,
-                date_creation: formData.date_creation,
-                nombre_personne: formData.nombre_personne,
-                type_de_celebration: formData.type_de_celebration
-            });
-
-            console.log('Demande créée avec succès:', demandeResponse.data);
-
-            // Reset form data
+            const response = await axios.post('http://127.0.0.1:8000/api/clients', formData);
+            setDemandeSent(true);
             setFormData({
                 nom: '',
                 numero: '',
@@ -67,28 +39,19 @@ const ContactPage = () => {
                 nombre_personne: '',
                 type_de_celebration: ''
             });
-
-            // Set demandeSent to true to display the message
-            setDemandeSent(true);
-
         } catch (error) {
-            console.error('Erreur lors de la création de la demande:', error);
+            console.error('Erreur lors de la création du client:', error);
             if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
                 setError(error.response.data.message || 'Une erreur est survenue. Veuillez réessayer.');
             } else if (error.request) {
-                // The request was made but no response was received
                 setError('Aucune réponse du serveur. Veuillez réessayer.');
             } else {
-                // Something happened in setting up the request that triggered an Error
                 setError('Une erreur est survenue. Veuillez réessayer.');
             }
         } finally {
             setLoading(false);
         }
     };
-
 
     return (
         <div className="bg-cover bg-center bg-gray">

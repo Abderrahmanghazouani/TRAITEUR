@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaInstagram, FaWhatsapp } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { FaLocationDot } from "react-icons/fa6";
-import pic3 from "../../assets/pic-5.jpg";
+
 import axios from "axios";
 
 const ContactPage = () => {

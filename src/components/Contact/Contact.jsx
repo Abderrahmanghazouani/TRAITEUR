@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import axios from 'axios';
+import axios from "axios";
+import { useState, useEffect } from 'react';
 
 const ContactPage = () => {
     const [formData, setFormData] = useState({
@@ -17,6 +17,11 @@ const ContactPage = () => {
     const [error, setError] = useState(null);
     const [demandeSent, setDemandeSent] = useState(false);
 
+    useEffect(() => {
+        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
+    }, []);
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -27,8 +32,28 @@ const ContactPage = () => {
         setError(null);
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/clients', formData);
-            setDemandeSent(true);
+            // Create the client
+            const clientResponse = await axios.post('http://127.0.0.1:8000/api/clients', {
+                nom: formData.nom,
+                numero: formData.numero,
+                email: formData.email
+            });
+
+            const clientId = clientResponse.data.id; // Assuming the ID is returned from the server
+
+            // Create the demande
+            const demandeResponse = await axios.post('http://127.0.0.1:8000/api/demandes', {
+                client_id: clientId, // Use the obtained clientId here
+                description: formData.description,
+                lieu: formData.lieu,
+                date_creation: formData.date_creation,
+                nombre_personne: formData.nombre_personne,
+                type_de_celebration: formData.type_de_celebration
+            });
+
+            console.log('Demande créée avec succès:', demandeResponse.data);
+
+            // Reset form data
             setFormData({
                 nom: '',
                 numero: '',
@@ -39,8 +64,12 @@ const ContactPage = () => {
                 nombre_personne: '',
                 type_de_celebration: ''
             });
+
+            // Set demandeSent to true to display the message
+            setDemandeSent(true);
+
         } catch (error) {
-            console.error('Erreur lors de la création du client:', error);
+            console.error('Erreur lors de la création de la demande:', error);
             if (error.response) {
                 setError(error.response.data.message || 'Une erreur est survenue. Veuillez réessayer.');
             } else if (error.request) {
@@ -52,6 +81,7 @@ const ContactPage = () => {
             setLoading(false);
         }
     };
+    
 
     return (
         <div className="bg-cover bg-center bg-gray">

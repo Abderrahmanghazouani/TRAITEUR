@@ -33,6 +33,7 @@ const EditAnnonce = () => {
       const response = await axios.post(`http://127.0.0.1:8000/api/annonceupdate/${id}`, formData, {
         headers: { 'Content-Type': 'multipart/form-data' },
         withCredentials: true,
+       
       });
       setMessage(response.data.message);
       setTimeout(() => {

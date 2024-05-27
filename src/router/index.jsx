@@ -15,6 +15,7 @@ import ListDemande from "../Admin/Demandes/ListDemandes";
 import AddAnnonce from "../Admin/Annonce/AddAnnoce";
 import EditAnnonce  from "../Admin/Annonce/EditAnnonce";
 import AnnonceList from "../Admin/Annonce/AnnonceList";
+import ListClients from "../Admin/ListClients";
 
 
 
@@ -93,7 +94,11 @@ export const router = createBrowserRouter([
       {
       path: "/list-demandes",
       element: <ListDemande/>,
-    },
+     },
+      {
+      path: "/list-clients",
+      element: <ListClients/>,
+     },
 
     ],
   },

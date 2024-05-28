@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { AiOutlineUnlock, AiOutlineWarning } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
 import backgroundImage from "../assets/pic-2.jpg";
@@ -11,6 +11,7 @@ const AxiosAdmin = axios.create({
     withXSRFToken:true,
     headers: {
         'Content-Type': 'application/json',
+        
     },
 });
 
@@ -19,6 +20,14 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const [csrfToken, setCsrfToken] = useState('');
+
+    useEffect(() => {
+        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        setCsrfToken(token);
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
+    }, []);
+    
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -28,7 +37,14 @@ const Login = () => {
 
         try {
             await AxiosAdmin.get('/sanctum/csrf-cookie');
-            const response = await AxiosAdmin.post('/api/login', { email, password });
+            const response = await AxiosAdmin.post('/login', { email, password },
+            { headers: {
+               
+                'X-CSRF-TOKEN': csrfToken,
+            },}
+           
+                
+            );
             console.log(response.data); // Log the response for debugging
             setEmail("");
             setPassword("");

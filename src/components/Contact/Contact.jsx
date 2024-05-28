@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 const ContactPage = () => {
@@ -16,10 +16,12 @@ const ContactPage = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [demandeSent, setDemandeSent] = useState(false);
+    const [csrfToken, setCsrfToken] = useState('');
 
     useEffect(() => {
-        const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken;
+        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+        setCsrfToken(token);
+        axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
     }, []);
 
     const handleChange = (e) => {
@@ -38,9 +40,12 @@ const ContactPage = () => {
                 nom: formData.nom,
                 numero: formData.numero,
                 email: formData.email
+            },{
+                withCredentials:true,
+                withXSRFToken:true,
             });
 
-            const clientId = clientResponse.data.client.idClient; // Adjust based on actual response structure
+            const clientId = clientResponse.data.idClient;
 
             // Create the demande
             const demandeResponse = await axios.post('http://127.0.0.1:8000/api/demandes', {
@@ -73,8 +78,6 @@ const ContactPage = () => {
             console.error('Erreur lors de la création de la demande:', error);
             if (error.response) {
                 setError(error.response.data.message || 'Une erreur est survenue. Veuillez réessayer.');
-            } else if (error.request) {
-                setError('Aucune réponse du serveur. Veuillez réessayer.');
             } else {
                 setError('Une erreur est survenue. Veuillez réessayer.');
             }
@@ -216,3 +219,4 @@ const ContactPage = () => {
 };
 
 export default ContactPage;
+

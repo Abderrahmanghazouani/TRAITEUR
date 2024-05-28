@@ -28,21 +28,21 @@ function AnnonceList() {
   };
 
   return (
-    <div className="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg">
-      <h5 className="text-2xl font-bold mb-4 text-center">Liste des Annonces</h5>
+    <div className="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg border border-bold border-primary  ">
+      <h5 className="text-3xl font-bold mb-4 text-center font-serif bg-primary border border-black">Liste des Annonces</h5>
       <div className="overflow-x-auto bg-gray-100">
-        <table className="w-full">
+        <table className="w-full  border border-double border-black ">
           <thead className="bg-[#e3dac9]">
             <tr>
-              <th className="px-4 py-2 border font-bold">Sr.No</th>
-              <th className="px-4 py-2 border font-bold">Titre</th>
-              <th className="px-4 py-2 border font-bold">Date</th>
-              <th className="px-4 py-2 border font-bold">Description</th>
-              <th className="px-4 py-2 border font-bold">Image</th>
-              <th className="px-4 py-2 border font-bold">Action</th>
+              <th className="px-4 py-2 border font-bold font-mono">Sr.No</th>
+              <th className="px-4 py-2 border font-bold font-mono">Titre</th>
+              <th className="px-4 py-2 border font-bold font-mono">Date</th>
+              <th className="px-4 py-2 border font-bold font-mono">Description</th>
+              <th className="px-4 py-2 border font-bold font-mono">Image</th>
+              <th className="px-4 py-2 border font-bold font-mono">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="font-serif">
             {annonce.map((pdata, index) => (
               <tr key={pdata.id}>
                 <td className="border px-4 py-2">{index + 1}</td>

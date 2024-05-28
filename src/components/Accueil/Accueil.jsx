@@ -50,7 +50,7 @@ const Accueil = () => {
           >
             <h1 className=" text-3xl font-bold mb-4 mx-10 text-transparent bg-black bg-opacity-70 text-center
              inline-block rounded-lg text-white border-double border-8 font-serif">
-              Pour l’organisation d’un évènement personnel, faites appel aux professionnels photos
+              Pour l’organisation d’un évènement personnel, faites appel aux professionnels traiteur
               <div className="flex flex-col">
                 <span className="bg-clip-text text-5xl bg-red-950 text-red-900">
                   N SAADI 

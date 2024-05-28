@@ -62,10 +62,10 @@ const Login = () => {
 
     return (
         <div className="text-white h-[100vh] flex flex-col justify-center items-center bg-cover" style={{ backgroundImage: `url(${backgroundImage})` }}>
-            <div className="flex items-center mb-8 bg-red-800 text-white p-4 rounded-md shadow-lg">
-                <AiOutlineWarning className="mr-2 text-4xl font-bold" />
-                <h1 className="text-3xl font-bold">C'est juste pour les administrateurs</h1>
-            </div>
+            {/* <div className="flex items-center mb-8 bg-red-800 text-white p-4 rounded-md shadow-lg"> */}
+                {/* <AiOutlineWarning className="mr-2 text-4xl font-bold" /> */}
+                {/* <h1 className="text-3xl font-bold">C'est juste pour les administrateurs</h1> */}
+            {/* </div> */}
             <div className="bg-slate-800 border h-80 border-slate-800 rounded-md p-8 shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-30 relative">
                 <h1 className="text-4xl text-white font-bold text-center mb-6">Login</h1>
                 <form onSubmit={handleLogin}>

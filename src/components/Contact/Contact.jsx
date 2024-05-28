@@ -30,6 +30,7 @@ const ContactPage = () => {
         e.preventDefault();
         setLoading(true);
         setError(null);
+        setDemandeSent(false);
 
         try {
             // Create the client
@@ -39,11 +40,11 @@ const ContactPage = () => {
                 email: formData.email
             });
 
-            const clientId = clientResponse.data.id; // Assuming the ID is returned from the server
+            const clientId = clientResponse.data.client.idClient; // Adjust based on actual response structure
 
             // Create the demande
             const demandeResponse = await axios.post('http://127.0.0.1:8000/api/demandes', {
-                client_id: clientId, // Use the obtained clientId here
+                client_id: clientId,
                 description: formData.description,
                 lieu: formData.lieu,
                 date_creation: formData.date_creation,
@@ -81,7 +82,6 @@ const ContactPage = () => {
             setLoading(false);
         }
     };
-    
 
     return (
         <div className="bg-cover bg-center bg-gray">
@@ -206,7 +206,6 @@ const ContactPage = () => {
                         </button>
                     </div>
                     {error && <div className="col-span-2 text-red-500">{error}</div>}
-                    {/* Display the message if demandeSent is true */}
                     {demandeSent && (
                         <div className="col-span-2 text-green-500">Demande envoyée, merci pour votre confiance.</div>
                     )}

@@ -6,27 +6,27 @@ const ListClients = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('http://127.0.0.1:8000/api/clients');
-                console.log('Fetched clients:', response.data);
-                setClients(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching clients:', error);
-                setError('Error fetching clients. Please try again later.');
-                setLoading(false);
-            }
-        };
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/clients');
+            console.log('Fetched clients:', response.data);
+            setClients(response.data);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching clients:', error);
+            setError('Error fetching clients. Please try again later.');
+            setLoading(false);
+        }
+    };
 
+    useEffect(() => {
         fetchData();
     }, []);
 
     const handleDelete = async (id) => {
         try {
             await axios.delete(`http://127.0.0.1:8000/api/clients/${id}`);
-            setClients(clients.filter(client => client.idClient !== id));
+            fetchData(); // Re-fetch clients after successful deletion
         } catch (error) {
             console.error('Error deleting client:', error);
         }
@@ -59,7 +59,7 @@ const ListClients = () => {
                             className="bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-4 rounded mt-2"
                             onClick={() => handleDelete(client.idClient)}
                         >
-                            Delete
+                            Supprimer
                         </button>
                     </li>
                 ))}

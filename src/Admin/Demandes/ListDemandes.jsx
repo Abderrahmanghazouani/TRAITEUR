@@ -6,27 +6,27 @@ const ListDemandes = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('http://127.0.0.1:8000/api/demandes');
-                console.log('Fetched demandes:', response.data);
-                setDemandes(response.data);
-                setLoading(false);
-            } catch (error) {
-                console.error('Error fetching demandes:', error);
-                setError('Error fetching demandes. Please try again later.');
-                setLoading(false);
-            }
-        };
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('http://127.0.0.1:8000/api/demandes');
+            console.log('Fetched demandes:', response.data);
+            setDemandes(response.data);
+            setLoading(false);
+        } catch (error) {
+            console.error('Error fetching demandes:', error);
+            setError('Error fetching demandes. Please try again later.');
+            setLoading(false);
+        }
+    };
 
+    useEffect(() => {
         fetchData();
     }, []);
 
     const handleDelete = async (id) => {
         try {
             await axios.delete(`http://127.0.0.1:8000/api/demandes/${id}`);
-            setDemandes(demandes.filter(demande => demande.idDemande !== id));
+            fetchData(); // Re-fetch demandes after successful deletion
         } catch (error) {
             console.error('Error deleting demande:', error);
         }

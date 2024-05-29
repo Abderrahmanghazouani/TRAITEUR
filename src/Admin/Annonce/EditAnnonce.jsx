@@ -151,7 +151,7 @@ const EditAnnonce = () => {
           )}
         </div>
         <div className="flex justify-center">
-          <button type="submit" className="bg-[#FF9F01] hover:bg-[#FF9E01] text-white font-bold py-2 px-4 rounded-md mt-4">Modifier</button>
+          <button type="submit" className="bg-yellow-500 hover:bg-yellow-600 font-mono text-white font-bold py-2 px-4 rounded-md mt-6">Modifier</button>
         </div>
       </form>
     </div>

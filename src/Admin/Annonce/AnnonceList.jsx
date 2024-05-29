@@ -28,7 +28,7 @@ function AnnonceList() {
   };
 
   return (
-    <div className="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg border border-bold border-primary  ">
+    <div className="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg border border-bold border-primary mb-6 ">
       <h5 className="text-3xl font-bold mb-4 text-center font-serif bg-primary border border-black">Liste des Annonces</h5>
       <div className="overflow-x-auto bg-gray-100">
         <table className="w-full  border border-double border-black ">

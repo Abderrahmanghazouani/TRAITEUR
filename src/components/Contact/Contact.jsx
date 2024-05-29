@@ -113,8 +113,9 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="bg-cover bg-center bg-gray">
+    <div className="bg-cover bg-center bg-[#f7f1e9]">
       <div className="container mx-auto px-4 py-8">
+        <h1 className="text-[#FF9F01] flex justify-center items-center text-3xl font-serif">Contactez Nous</h1>
         {/* Contact information section */}
         <div className="mt-8 grid grid-cols-2 gap-8 mb-3">
           <div className="border border-[#FF9F01] rounded-lg p-4 flex flex-col items-center justify-center">

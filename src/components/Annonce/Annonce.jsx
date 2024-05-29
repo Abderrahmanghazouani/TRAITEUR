@@ -18,7 +18,7 @@ export default function Annonce() {
 
   return (
     <div className="container mx-auto mt-10 px-4 py-8 bg-white shadow-md rounded-lg">
-      <h5 className="text-3xl font-bold mb-6 text-center mt-6">Liste des Nouvelles Annonces</h5>
+      <h5 className="text-3xl font-bold mb-6 text-center text-[#FF9F01] mt-6">Liste des Nouvelles Annonces</h5>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {annonce.map((pdata, index) => (
           <div

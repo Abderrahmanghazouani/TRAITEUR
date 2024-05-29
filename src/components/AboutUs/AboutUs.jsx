@@ -15,7 +15,7 @@ const AboutUs = () => {
 
   return (
     <>
-      <div className="min-h-[550px] ">
+      <div className="min-h-[550px] bg-[#f7f1e9] border border-dotted border-black ">
         <div className="min-h-[550px] flex justify-center items-center backdrop-blur-xl py-10 sm:py-0 ">
           <div
             data-aos="slide-up"
@@ -41,7 +41,7 @@ const AboutUs = () => {
                 </p>
               
                 <div>
-                  <a href="about-us"><button className="bg-gradient-to-r from-primary to-secondary font-mono text-white py-2 px-4 rounded-lg shadow-xl hover:shadow-md">
+                  <a href="/nous-details"><button className="bg-gradient-to-r from-primary to-secondary font-mono text-white py-2 px-4 rounded-lg shadow-xl hover:shadow-md">
                     Lire Plus
                   </button></a>
                 </div>

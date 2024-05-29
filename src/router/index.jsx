@@ -8,13 +8,23 @@ import Contact from "../components/Contact/Contact";
 import Annonce from "../components/Annonce/Annonce";
 import Footer from "../components/Footer/Footer";
 import Login from "../Admin/Login";
-import Traiteur from "../serviceDetails/Traiteur";
+import Traiteur from "../serviceDetails/traiteur/Traiteur";
 
 import DemandeAnnonce from "../Admin/DemandeAnnonce";
 import ListDemande from "../Admin/Demandes/ListDemandes";
 import AddAnnonce from "../Admin/Annonce/AddAnnoce";
 import EditAnnonce  from "../Admin/Annonce/EditAnnonce";
 import AnnonceList from "../Admin/Annonce/AnnonceList";
+import Autre from "../serviceDetails/Autre";
+import Table from "../serviceDetails/Table";
+import Amengement from "../serviceDetails/Amenagment";
+import Florale from "../serviceDetails/Decoration";
+import PlatS from "../serviceDetails/traiteur/traiteurDetails/platS";
+import PlatM from "../serviceDetails/traiteur/traiteurDetails/platM";
+import Buffet from "../serviceDetails/traiteur/traiteurDetails/buffet";
+import Patisserie from "../serviceDetails/patisserie/Ptisserie";
+import PatisserieDesserts from "../serviceDetails/patisserie/patisserie1";
+import PieceMontee from "../serviceDetails/patisserie/pieceMonte";
 
 
 
@@ -64,6 +74,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/about-us",
+        element: <AboutUs/>,
+      },
+      {
+        path: "/nous-details",
         element: <Nous/>,
       },
       {
@@ -73,6 +87,30 @@ export const router = createBrowserRouter([
       {
         path: "/traiteur",
         element: <Traiteur/>,
+      },
+      {
+        path: "/traiteur/plats-marocains",
+        element: <PlatM/>,
+      },
+      {
+        path: "/traiteur/plas-sales",
+        element: <PlatS/>,
+      },
+      {
+        path: "/traiteur/buffet",
+        element: <Buffet/>,
+      },
+      {
+        path: "/patisserie",
+        element: <Patisserie/>,  
+      },
+      {
+        path: "/patisserie/patisseries-marocains-desserts",
+        element: <PatisserieDesserts/>,
+      },
+      {
+        path: "/patisserie/pieces-montees",
+        element: <PieceMontee/>,
       },
       {
         path: "/demande-annonce",
@@ -95,6 +133,23 @@ export const router = createBrowserRouter([
       path: "/list-demandes",
       element: <ListDemande/>,
      },
+     {
+      path: "/autres-services",
+      element: <Autre/>,
+     },
+     {
+      path: "/art-de-la-table",
+      element: <Table/>,
+     },
+     {
+      path: "/amenagement",
+      element: <Amengement/>,    
+     },
+     {
+      path: "/decoration-florale",
+      element: <Florale/>,    
+     },
+     
     
 
     ],

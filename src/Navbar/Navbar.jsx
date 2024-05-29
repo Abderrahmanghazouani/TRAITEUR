@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, createContext, useContext } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
 import Logo from "../assets/logo.jpg";
 import { IoMdContacts } from "react-icons/io";
 import { FiAlignJustify } from "react-icons/fi";
+
+// Create a context to share the navbar height
+const NavbarHeightContext = createContext(0);
 
 const Menu = [
   {
@@ -23,10 +26,10 @@ const Menu = [
     submenu: [
       { id: 1, name: "Traiteur", link: "/traiteur" },
       { id: 2, name: "Patisserie", link: "/patisserie" },
-      { id: 3, name: "Art du table", link: "/table" },
+      { id: 3, name: "Art du table", link: "/art-de-la-table" },
       { id: 4, name: "Decoration", link: "/decoration" },
       { id: 5, name: "Amenagment", link: "/amenagment" },
-      { id: 6, name: "Autre", link: "/autre" },
+      { id: 6, name: "Autre", link: "/autres-services" },
     ],
   },
   {
@@ -43,6 +46,8 @@ const Navbar = () => {
   const [showNavbar, setShowNavbar] = useState(false); // State to manage navbar visibility
   const [verticalNavbar, setVerticalNavbar] = useState(false); // State to manage vertical navbar
   const location = useLocation();
+  const navbarRef = useRef(null); // Ref to get navbar height
+  const [navbarHeight, setNavbarHeight] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -77,6 +82,25 @@ const Navbar = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const updateNavbarHeight = () => {
+      if (navbarRef.current) {
+        setNavbarHeight(navbarRef.current.offsetHeight);
+      }
+    };
+
+    const resizeObserver = new ResizeObserver(updateNavbarHeight);
+    if (navbarRef.current) {
+      resizeObserver.observe(navbarRef.current);
+    }
+
+    return () => {
+      if (navbarRef.current) {
+        resizeObserver.unobserve(navbarRef.current);
+      }
+    };
+  }, [showNavbar, isNavbarScrolled]);
+
   const handleMouseEnter = () => {
     if (dropdownTimeout) {
       clearTimeout(dropdownTimeout);
@@ -95,11 +119,11 @@ const Navbar = () => {
     setShowNavbar(!showNavbar);
     setVerticalNavbar(!verticalNavbar); // Toggle vertical state
   };
-
   return (
-    <>
+    <NavbarHeightContext.Provider value={navbarHeight}>
       <header
-        className={`fixed top-0 left-0 w-full z-10 transition-all duration-300 ease-in-out ${
+        ref={navbarRef}
+        className={`fixed top-0 left-0 w-full h-20 z-10 transition-all duration-300 ease-in-out ${
           isNavbarScrolled
             ? "bg-[#e3dac9] dark:bg-gray-900 dark:text-white shadow-lg py-1"
             : "bg-[#e3dac9] dark:bg-gray-900 dark:text-white py-3"
@@ -116,12 +140,13 @@ const Navbar = () => {
               {/* Button to toggle navbar on smaller screens */}
               <button
                 onClick={toggleNavbar}
-                className="text-xl text-black  drop-shadow-sm cursor-pointer"
+                className="text-xl text-black drop-shadow-sm cursor-pointer"
               >
-               <FiAlignJustify />
+                <FiAlignJustify />
               </button>
             </div>
-            <div className={`sm:flex justify-between items-center gap-4 font-mono font-bold ${showNavbar ? "flex" : "hidden"} ${verticalNavbar ? "flex-col" : "flex-row"}`}> {/* Show/hide navbar based on state */}
+            <div className={`sm:flex justify-between items-center gap-4 font-mono font-bold ${showNavbar ? "flex" : "hidden"} ${verticalNavbar ? "flex-col" : "flex-row"}`}>
+              {/* Show/hide navbar based on state */}
               <ul className={`sm:flex items-center gap-4 ${verticalNavbar ? "flex-col" : "hidden"}`}>
                 {Menu.map((menu) => (
                   <li
@@ -175,10 +200,18 @@ const Navbar = () => {
         </div>
       </header>
 
-      <main className={`mt-${verticalNavbar ? '16' : '72'}px`}> {/* Adjust this value based on the height of your navbar */}
-        <Outlet />
-      </main>
-    </>
+      <MainContent />
+    </NavbarHeightContext.Provider>
+  );
+};
+
+const MainContent = () => {
+  const navbarHeight = useContext(NavbarHeightContext);
+
+  return (
+    <main style={{ paddingTop: `${navbarHeight}px` }}>
+      <Outlet />
+    </main>
   );
 };
 

@@ -10,7 +10,6 @@ import Footer from "../components/Footer/Footer";
 import FooterLayout from "../components/Footer/FooterLayout";
 import Login from "../Admin/Login";
 import Traiteur from "../serviceDetails/traiteur/Traiteur";
-
 import DemandeAnnonce from "../Admin/DemandeAnnonce";
 import ListDemande from "../Admin/Demandes/ListDemandes";
 import AddAnnonce from "../Admin/Annonce/AddAnnoce";
@@ -26,9 +25,6 @@ import Buffet from "../serviceDetails/traiteur/traiteurDetails/buffet";
 import Patisserie from "../serviceDetails/patisserie/Ptisserie";
 import PatisserieDesserts from "../serviceDetails/patisserie/patisserie1";
 import PieceMontee from "../serviceDetails/patisserie/pieceMonte";
-
-
-
 
 
 
@@ -75,7 +71,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/about-us",
-        element: <AboutUs/>,
+        element: <Nous/>,
       },
       {
         path: "/nous-details",
@@ -110,14 +106,30 @@ export const router = createBrowserRouter([
         element: <PatisserieDesserts/>,
       },
       {
-        path: "/patisserie/pieces-montees",
+        path: "//patisserie/pieces-montees",
         element: <PieceMontee/>,
       },
+      {
+       path: "/autres-services",
+       element: <Autre/>,
+      },
+      {
+       path: "/art-de-la-table",
+       element: <Table/>,
+      },
+      {
+       path: "/amenagment",
+       element: <Amengement/>,    
+      },
+      {
+       path: "/decoration",
+       element: <Florale/>,    
+      },
+      // Annonces
       {
         path: "/demande-annonce",
         element: <DemandeAnnonce/>,
       },
-     // Annonces
       {
         path: "/add-annonce",
         element: <AddAnnonce/>,
@@ -133,22 +145,6 @@ export const router = createBrowserRouter([
       {
       path: "/list-demandes",
       element: <ListDemande/>,
-     },
-     {
-      path: "/autres-services",
-      element: <Autre/>,
-     },
-     {
-      path: "/art-de-la-table",
-      element: <Table/>,
-     },
-     {
-      path: "/amenagement",
-      element: <Amengement/>,    
-     },
-     {
-      path: "/decoration-florale",
-      element: <Florale/>,    
      },
      
     

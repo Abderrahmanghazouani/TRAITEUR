@@ -61,7 +61,7 @@ const AddAnnonce = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto mt-10 p-6 bg-[#e3dac9] shadow-md rounded-lg border border-double border-black">
+    <div className="max-w-lg mx-auto mt-10 p-6 bg-[#e3dac9] shadow-md rounded-lg border border-double border-black mb-3">
       <h2 className="text-2xl font-bold mb-6 flex justify-center items-center rounded-lg bg-white border border-black font-serif">
         Ajouter une nouvelle annonce
       </h2>

@@ -1,10 +1,9 @@
-
-
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 
 import Logo from "../assets/logo.jpg";
 import { IoMdContacts } from "react-icons/io";
+import { FiAlignJustify } from "react-icons/fi";
 
 const Menu = [
   {
@@ -38,17 +37,19 @@ const Menu = [
 ];
 
 const Navbar = () => {
-  const [isNavbarFixed, setIsNavbarFixed] = useState(true); // Set to true initially
+  const [isNavbarScrolled, setIsNavbarScrolled] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [dropdownTimeout, setDropdownTimeout] = useState(null);
+  const [showNavbar, setShowNavbar] = useState(false); // State to manage navbar visibility
+  const [verticalNavbar, setVerticalNavbar] = useState(false); // State to manage vertical navbar
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100 && location.pathname !== "/traiteur") {
-        setIsNavbarFixed(true);
+      if (window.scrollY > 100 || location.pathname === "/traiteur") {
+        setIsNavbarScrolled(true);
       } else {
-        setIsNavbarFixed(false);
+        setIsNavbarScrolled(false);
       }
     };
 
@@ -86,28 +87,42 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     const timeout = setTimeout(() => {
       setDropdownVisible(false);
-    }, 90); // 0.09second
+    }, 90); // 0.09 seconds
     setDropdownTimeout(timeout);
+  };
+
+  const toggleNavbar = () => {
+    setShowNavbar(!showNavbar);
+    setVerticalNavbar(!verticalNavbar); // Toggle vertical state
   };
 
   return (
     <>
       <header
-        className={`${
-          isNavbarFixed
-            ? "fixed top-0 left-0 w-full shadow-lg bg-[#e3dac9] dark:bg-gray-900 dark:text-white duration-200 z-10"
-            : "relative"
-        } py-2 px-4`}
+        className={`fixed top-0 left-0 w-full z-10 transition-all duration-300 ease-in-out ${
+          isNavbarScrolled
+            ? "bg-[#e3dac9] dark:bg-gray-900 dark:text-white shadow-lg py-1"
+            : "bg-[#e3dac9] dark:bg-gray-900 dark:text-white py-3"
+        }`}
       >
-        <div className="container">
+        <div className="container px-4">
           <div className="flex justify-between items-center">
             <div>
               <a href="accueil" className="flex items-center gap-2">
                 <img src={Logo} alt="Logo" className="w-36 h-16" />
               </a>
             </div>
-            <div className="flex justify-between items-center gap-4 font-mono font-bold">
-              <ul className="hidden sm:flex items-center gap-4 ">
+            <div className="sm:hidden">
+              {/* Button to toggle navbar on smaller screens */}
+              <button
+                onClick={toggleNavbar}
+                className="text-xl text-black  drop-shadow-sm cursor-pointer"
+              >
+               <FiAlignJustify />
+              </button>
+            </div>
+            <div className={`sm:flex justify-between items-center gap-4 font-mono font-bold ${showNavbar ? "flex" : "hidden"} ${verticalNavbar ? "flex-col" : "flex-row"}`}> {/* Show/hide navbar based on state */}
+              <ul className={`sm:flex items-center gap-4 ${verticalNavbar ? "flex-col" : "hidden"}`}>
                 {Menu.map((menu) => (
                   <li
                     key={menu.id}
@@ -123,9 +138,13 @@ const Navbar = () => {
                     </a>
                     {menu.submenu && (
                       <ul
-                        className={`absolute left-0 top-full mt-2 w-48 shadow-lg border rounded-lg z-20 bg-[#e3dac9] bg-opacity-80 transition-opacity duration-500 ${dropdownVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                        className={`absolute left-0 top-full mt-2 w-48 shadow-lg border rounded-lg z-20 bg-[#e3dac9] bg-opacity-80 transition-opacity duration-500 ${
+                          dropdownVisible
+                            ? "opacity-100"
+                            : "opacity-0 pointer-events-none"
+                        }`}
                       >
-                        {menu.submenu.map((sub, index) => (
+                        {menu.submenu.map((sub) => (
                           <li key={sub.id}>
                             <a
                               href={sub.link}
@@ -133,7 +152,7 @@ const Navbar = () => {
                             >
                               {sub.name}
                             </a>
-                            {index < menu.submenu.length - 1 && (
+                            {sub.id < menu.submenu.length && (
                               <hr className="border-t-2 border-[#FFA801]" />
                             )}
                           </li>
@@ -143,19 +162,20 @@ const Navbar = () => {
                   </li>
                 ))}
               </ul>
-              <a href="contact">
-                <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 hover:border-2 hover:border-double hover:border-black duration-200 text-white py-2 px-4 rounded-lg flex items-center gap-3 font-mono">
-
-                  Contact
-                  <IoMdContacts className="text-xl text-white drop-shadow-sm cursor-pointer" />
-                </button>
-              </a>
+              {!verticalNavbar && (
+                <a href="contact">
+                  <button className="bg-gradient-to-r from-primary to-secondary hover:scale-105 hover:border-2 hover:border-double hover:border-black duration-200 text-white py-2 px-4 rounded-lg flex items-center gap-3 font-mono">
+                    Contact
+                    <IoMdContacts className="text-xl text-white drop-shadow-sm cursor-pointer" />
+                  </button>
+                </a>
+              )}
             </div>
           </div>
         </div>
       </header>
 
-      <main>
+      <main className={`mt-${verticalNavbar ? '16' : '72'}px`}> {/* Adjust this value based on the height of your navbar */}
         <Outlet />
       </main>
     </>

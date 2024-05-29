@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { format } from 'date-fns';
 
 const ListDemandes = () => {
     const [demandes, setDemandes] = useState([]);
@@ -41,10 +42,10 @@ const ListDemandes = () => {
     }
 
     return (
-        <div className="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg border border-bold border-primary ">
-            <h1 className="text-3xl font-extrabold mb-6 text-center font-serif  bg-primary border border-black ">Liste des demandes</h1>
+        <div className="container mx-auto mt-10 p-6 bg-white shadow-md rounded-lg border border-bold border-primary">
+            <h1 className="text-3xl font-extrabold mb-6 text-center font-serif bg-primary border border-black">Liste des demandes</h1>
             <div className="overflow-x-auto">
-                <table className="min-w-full bg-white border border-black border-double ">
+                <table className="min-w-full bg-white border border-black border-double">
                     <thead className="bg-[#e3dac9] font-mono font-bold">
                         <tr>
                             <th className="py-2 px-4 border-b border-r">Client Nom</th>
@@ -66,7 +67,7 @@ const ListDemandes = () => {
                                 <td className="py-2 px-4 border-b border-r">{demande.client.numero}</td>
                                 <td className="py-2 px-4 border-b border-r">{demande.type_de_celebration}</td>
                                 <td className="py-2 px-4 border-b border-r">{demande.lieu}</td>
-                                <td className="py-2 px-4 border-b border-r">{demande.date_creation}</td>
+                                <td className="py-2 px-4 border-b border-r">{format(new Date(demande.date_creation), 'yyyy-MM-dd')}</td>
                                 <td className="py-2 px-4 border-b border-r">{demande.nombre_personne}</td>
                                 <td className="py-2 px-4 border-b border-r">{demande.description}</td>
                                 <td className="py-2 px-4 border-b">

@@ -1,33 +1,20 @@
-import { useState,useEffect } from 'react';
-import { AiOutlineUnlock, AiOutlineWarning } from "react-icons/ai";
+import { useState, useEffect } from 'react';
+import { AiOutlineUnlock } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
 import backgroundImage from "../assets/pic-2.jpg";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const AxiosAdmin = axios.create({
-    baseURL: 'http://localhost:8000',
-    withCredentials: true,
-    withXSRFToken:true,
-    headers: {
-        'Content-Type': 'application/json',
-        
-    },
-});
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const [csrfToken, setCsrfToken] = useState('');
+   
 
-    useEffect(() => {
-        const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-        setCsrfToken(token);
-        axios.defaults.headers.common['X-CSRF-TOKEN'] = token;
-    }, []);
-    
+
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -36,19 +23,24 @@ const Login = () => {
         console.log("Password:", password);
 
         try {
-            await AxiosAdmin.get('/sanctum/csrf-cookie');
-            const response = await AxiosAdmin.post('/login', { email, password },
-            { headers: {
-               
-                'X-CSRF-TOKEN': csrfToken,
-            },}
-           
-                
-            );
+            
+            await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
+
+            // Envoyer la requête POST avec le jeton CSRF inclus dans les en-têtes
+            const response = await axios.post('http://127.0.0.1:8000/login', { email, password }, {
+                withCredentials: true, // Inclure les cookies dans la requête
+                xsrfCookieName: "XSRF-TOKEN",
+                xsrfHeaderName: "X-XSRF-TOKEN",
+                headers: {
+
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                }
+            });
             console.log(response.data); // Log the response for debugging
             setEmail("");
             setPassword("");
-            navigate("/demande-annonce");
+            navigate("/accueil");
         } catch (error) {
             if (error.response && error.response.status === 422) {
                 console.error("Validation error:", error.response.data.errors);
@@ -62,10 +54,6 @@ const Login = () => {
 
     return (
         <div className="text-white h-[100vh] flex flex-col justify-center items-center bg-cover" style={{ backgroundImage: `url(${backgroundImage})` }}>
-            {/* <div className="flex items-center mb-8 bg-red-800 text-white p-4 rounded-md shadow-lg"> */}
-                {/* <AiOutlineWarning className="mr-2 text-4xl font-bold" /> */}
-                {/* <h1 className="text-3xl font-bold">C'est juste pour les administrateurs</h1> */}
-            {/* </div> */}
             <div className="bg-slate-800 border h-80 border-slate-800 rounded-md p-8 shadow-lg backdrop-filter backdrop-blur-sm bg-opacity-30 relative">
                 <h1 className="text-4xl text-white font-bold text-center mb-6">Login</h1>
                 <form onSubmit={handleLogin}>

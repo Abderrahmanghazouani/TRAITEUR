@@ -1,40 +1,27 @@
-//  import axios from "axios";
 
 
-// // Fetch the CSRF token here
-// const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+// import axios from 'axios';
 
-// const AxiosAdmin = axios.create({
-// baseURL:'http://localhost:8000' ,
-// withCredentials:true,
-// withXSRFToken: true,
-// headers: {
-//     'Content-Type': 'application/json',
-//     'X-CSRF-TOKEN': csrfToken, // Ensure CSRF token is included in headers
-//   },
+// const axiosClient = axios.create({
+//     baseURL: 'http://localhost:8000',
+//     withCredentials: true,
+//     withXSRFToken:true,
+//     headers: {
+//         'Content-Type': 'application/json',
+//     },
+// });
 
-// })
+// axiosClient.interceptors.request.use(function (config) {
+//     const token = localStorage.getItem('token');
+//     if (token) {
+//         config.headers.Authorization = 'Bearer ' + token;
+//     }
+//     return config;
+// }, function (error) {
+//     return Promise.reject(error);
+// });
 
+// export default axiosClient;
 
-// // AxiosAdmin.interceptors.request.use(function (config) {
-// //   const token = localStorage.getItem('token');
-// //   if (token) {
-// //     config.headers.Authorization = 'Bearer ' + token
-// //   }
-// //   return config
-
-// // })
-
-// // // AxiosAdmin.interceptors.request.use(function (config) {
-// // //   const token = localStorage.getItem('token');
-// // //   if (token) {
-// // //     config.headers.Authorization = 'Bearer ' + token
-// // //   }
-// // //   return config
-// // // })
-
-
-
-// // export {AxiosAdmin} ;
 
 

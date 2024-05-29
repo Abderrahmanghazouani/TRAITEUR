@@ -24,15 +24,15 @@ const CelebrationImg = [
   {
     id: 3,
     img: amenagement,
-    name: 'AMENAGEMENT',
-    description: 'Description de la boisson Cold Coffee.',
+    name: 'AMÉNAGEMENT',
+  
     link: '/amenagement'
   },
   {
     id: 4,
     img: florale,
     name: 'DECORATION FLORALE',
-    description: 'Description du plat Pasta.',
+  
     link: '/decoration-florale'
   },
   {
@@ -53,7 +53,7 @@ const CelebrationImg = [
 
 const Celebration = () => {
   return (
-    <div className="py-10 bg-white">
+    <div className="py-10 bg-[#f7f1e9] border border-dotted border-black">
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <p className="text-3xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary font-mono">
@@ -66,7 +66,7 @@ const Celebration = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 place-items-center font-mono">
           {CelebrationImg.map((service) => (
             <a key={service.id} href={service.link}>
-              <div className="rounded-lg bg-white shadow-md transition duration-300 ease-in-out transform hover:scale-105 hover:bg-[#e3dac9] hover:text-yellow-500" style={{ width: '280px', height: '280px' }}>
+              <div className="rounded-lg bg-white shadow-md transition duration-300 ease-in-out transform hover:scale-105 border hover:border-black hover:bg-[#e3dac9] hover:text-yellow-500" style={{ width: '280px', height: '280px' }}>
                 <div className="h-48 overflow-hidden">
                   <img src={service.img} alt={service.name} loading='lazy' className="w-full h-full object-cover" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>

@@ -62,13 +62,13 @@ function AnnonceList() {
                       to={`/editannonce/${pdata.id}/edit`}
                       className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-md mr-2 mb-2"
                     >
-                      Edit
+                      Modifier
                     </Link>
                     <button
                       onClick={() => deleteAnnonce(pdata.id)}
                       className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md mb-2"
                     >
-                      Delete
+                      Supprimer
                     </button>
                   </div>
                 </td>

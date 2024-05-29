@@ -7,6 +7,7 @@ import Prestations from "../components/Prestations/Prestations";
 import Contact from "../components/Contact/Contact";
 import Annonce from "../components/Annonce/Annonce";
 import Footer from "../components/Footer/Footer";
+import FooterLayout from "../components/Footer/FooterLayout";
 import Login from "../Admin/Login";
 import Traiteur from "../serviceDetails/traiteur/Traiteur";
 
@@ -36,7 +37,7 @@ function Layout({ children }) {
     <div>
       <Navbar />
       {children}
-      {/* <FooterLayout /> */}
+      <FooterLayout />
     </div>
   );
 }

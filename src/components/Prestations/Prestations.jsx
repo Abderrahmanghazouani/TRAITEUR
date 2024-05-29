@@ -56,10 +56,9 @@ const Celebration = () => {
     <div className="py-10 bg-[#f7f1e9] border border-dotted border-black">
       <div className="container mx-auto">
         <div className="text-center mb-10">
-          <p className="text-sm bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary font-mono">
+          <p className="text-3xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary font-mono">
             NOS SERVICES
           </p>
-          <h1 className="text-3xl font-bold font-mono">SERVICES</h1>
           <p className="text-lg font-bold  text-gray-500 font-serif ">
            Vous êtes à la recherche d’un traiteur pour un évènement à Marrakech ou partout au Maroc N Saadi évents vous propose des menus adaptés à votre thème, vos envies et votre budget
           </p>
@@ -69,7 +68,7 @@ const Celebration = () => {
             <a key={service.id} href={service.link}>
               <div className="rounded-lg bg-white shadow-md transition duration-300 ease-in-out transform hover:scale-105 border hover:border-black hover:bg-[#e3dac9] hover:text-yellow-500" style={{ width: '280px', height: '280px' }}>
                 <div className="h-48 overflow-hidden">
-                  <img src={service.img} alt={service.name} className="w-full h-full object-cover" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={service.img} alt={service.name} loading='lazy' className="w-full h-full object-cover" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div className="p-4">
                   <h2 className="text-lg font-semibold text-center">{service.name}</h2>

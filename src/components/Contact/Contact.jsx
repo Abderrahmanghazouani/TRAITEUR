@@ -1,6 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { FaWhatsapp, FaInstagram, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
+import {
+  FaWhatsapp,
+  FaInstagram,
+  FaEnvelope,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 
 const ContactPage = () => {
   const [formData, setFormData] = useState({
@@ -100,7 +105,7 @@ const ContactPage = () => {
       if (error.response) {
         setError(
           error.response.data.message ||
-          "Une erreur est survenue. Veuillez réessayer."
+            "Une erreur est survenue. Veuillez réessayer."
         );
       } else if (error.request) {
         setError("Aucune réponse du serveur. Veuillez réessayer.");
@@ -115,57 +120,56 @@ const ContactPage = () => {
   return (
     <div className="bg-cover bg-center bg-[#f7f1e9]">
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-[#FF9F01] flex justify-center items-center text-3xl font-serif">Contactez Nous</h1>
+        <h1 className="text-[#FF9F01] flex justify-center items-center text-3xl font-serif font-bold">
+          Contactez Nous
+        </h1>
         {/* Contact information section */}
         <div className="mt-8 grid grid-cols-2 gap-8 mb-3">
-          <div className="border border-[#FF9F01] rounded-lg p-4 flex flex-col items-center justify-center">
-            <div className="flex items-center text-xl text-black">
-              <FaWhatsapp className="mr-2 text-green-500" />
-              <a
-                href="https://wa.me/yourphonenumber"
+        <a
+                href="https://wa.me/+212 661-156597"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline"
               >
+          <div className="border border-[#FF9F01] rounded-lg p-4 flex flex-col items-center justify-center hover:bg-green-600">
+            <div className="flex items-center text-xl text-black hover:text-white">
+              <FaWhatsapp className="mr-2" />
                 WhatsApp
-              </a>
             </div>
           </div>
-          <div className="border border-[#FF9F01] rounded-lg p-4 flex flex-col items-center justify-center">
-            <div className="flex items-center text-xl text-black">
-              <FaInstagram className="mr-2 text-pink-500" />
+          </a>
               <a
-                href="https://www.instagram.com/yourusername"
+                href="https://www.instagram.com/saadidreams?igsh=MTA1djd1azU0bXBoZA=="
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:underline"
               >
+          <div className="border border-[#FF9F01] rounded-lg p-4 flex flex-col items-center justify-center hover:bg-pink-500">
+            <div className="flex items-center text-xl text-black hover:text-white">
+              <FaInstagram className="mr-2 " />
                 Instagram
-              </a>
             </div>
           </div>
+          </a>
           <div className="border border-[#FF9F01] rounded-lg p-4 flex flex-col items-center justify-center">
-            <div className="flex items-center text-xl text-black">
-              <FaEnvelope className="mr-2 mb-1 text-yellow-500" />{" "}
-              {/* Added margin bottom here */}
+            <div className="flex items-center text-xl text-black break-all">
+              <FaEnvelope className="mr-2 mb-1 text-yellow-500 mt-1 text-2xl" />
               <a
-                href="mailto:youremail@example.com"
-                className="hover:underline"
+                href="mailto:saadidreams@gmail.com"
+                className="hover:text-[#FF9F01]"
               >
-                youremail@example.com
+                saadidreams@gmail.com
               </a>
             </div>
           </div>
 
           <div className="border border-[#FF9F01] rounded-lg p-4 flex flex-col items-center justify-center">
             <div className="flex items-center text-xl text-black">
-              <FaMapMarkerAlt className="mr-2 text-red-500" />
-              <span>Adresse: 123 Your Street, Your City, Your Country</span>
+              <FaMapMarkerAlt className="mr-2 text-red-500 text-2xl" />
+              <span>Issil marrakech</span>
             </div>
           </div>
         </div>
 
-        <form className="grid grid-cols-2 gap-8" onSubmit={handleSubmit}>
+        <form className="grid grid-cols-2 gap-8 mt-8" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="nom" className="block text-xl text-black font-bold">
               Nom :
@@ -257,7 +261,6 @@ const ContactPage = () => {
               required
             />
           </div>
-
 
           <div>
             <label

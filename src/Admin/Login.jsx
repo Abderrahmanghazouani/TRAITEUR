@@ -1,20 +1,15 @@
-import { useState} from 'react';
+import { useState } from 'react';
 import { AiOutlineUnlock } from "react-icons/ai";
 import { BiUser } from "react-icons/bi";
 import backgroundImage from "../assets/pic-2.jpg";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-
-
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-   
-
-
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -23,20 +18,15 @@ const Login = () => {
         console.log("Password:", password);
 
         try {
-            
+            // First, get the CSRF token
             await axios.get('http://127.0.0.1:8000/sanctum/csrf-cookie');
 
-            // Envoyer la requête POST avec le jeton CSRF inclus dans les en-têtes
-            const response = await axios.post('http://127.0.0.1:8000/login', { email, password }, {
-                withCredentials: true, // Inclure les cookies dans la requête
-                xsrfCookieName: "XSRF-TOKEN",
-                xsrfHeaderName: "X-XSRF-TOKEN",
-                headers: {
+            // Send the POST request with the CSRF token included
+            const response = await axios.post('http://127.0.0.1:8000/login', 
+                { email, password }, 
+                { withCredentials: true }
+            );
 
-                    'Content-Type': 'application/json',
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                }
-            });
             console.log(response.data); // Log the response for debugging
             setEmail("");
             setPassword("");

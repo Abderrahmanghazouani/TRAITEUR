@@ -24,7 +24,7 @@ const Accueil = () => {
     minHeight: "calc(100vh - 20px)", // Hauteur moins la marge
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center", 
     textAlign: "center",
   };
 

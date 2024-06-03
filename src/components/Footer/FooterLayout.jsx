@@ -54,7 +54,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="">
+            <div>
               <div className="py-8 px-4 ">
                 <h1 className="sm:text-xl text-xl font-bold sm:text-left text-justify mb-3">
                   Adresse
@@ -62,22 +62,22 @@ const Footer = () => {
                 <ul className="flex flex-col gap-3">
                   <div className="flex items-center gap-3">
                     <FaLocationArrow />
-                    <p>Noida, Uttar Pradesh</p>
+                    <p>Issil marrakech</p>
                   </div>
                   <div className="flex items-center gap-3 mt-3">
                     <FaPhone />
-                    <p>+212 123456789</p>
+                    <p>+212 661-156597</p>
                   </div>
 
                   <div className="flex items-center gap-3 mt-3">
                     <MdEmail/>
-                  <p>abdo@gmail.com</p>
+                  <p>saadidreams@gmail.com</p>
                   </div>
 
                   
                   <div className="flex items-center gap-3 mt-6">
                     <a
-                      href="https://www.instagram.com/YOUR_INSTAGRAM_USERNAME/"
+                      href="https://www.instagram.com/saadidreams?igsh=MTA1djd1azU0bXBoZA=="
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-pink-500 hover:text-pink-600"
@@ -85,7 +85,7 @@ const Footer = () => {
                       <FaInstagram className="text-xl" />
                     </a>
                     <a
-                      href="https://api.whatsapp.com/send?phone=YOUR_PHONE_NUMBER"
+                      href="https://api.whatsapp.com/+212 661-156597"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-green-500 hover:text-green-600"
@@ -96,11 +96,6 @@ const Footer = () => {
                 </ul>
               </div>
             </div>
-            <div className="">
-
-
-        
-          </div>
         </div>
       </div>
     </section>

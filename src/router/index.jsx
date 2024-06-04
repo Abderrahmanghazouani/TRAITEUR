@@ -49,6 +49,17 @@ function Layout2({ children }) {
   );
 }
 
+function Layout3({ children }) {
+  return (
+    <div>
+      <Navbar />
+      {children}
+
+    </div>
+  );
+}
+
+
 const AccueilLayout = () => (
   <div>
     <Accueil />
@@ -84,6 +95,11 @@ export const router = createBrowserRouter([
         path: '/nous-details',
         element: <Nous />,
       },
+    ],
+  },
+  {
+    element: <Layout3 />,
+    children: [
       {
         path: '/annonce',
         element: <Annonce />,
@@ -140,7 +156,7 @@ export const router = createBrowserRouter([
 
       },
       {
-        path: '/page-admin',
+        path: '/demande-annonce',
         element: <DemandeAnnonce />,
       },
       {
@@ -159,11 +175,6 @@ export const router = createBrowserRouter([
         path: '/list-demandes',
         element: <ListDemande />,
       },
-      // Fallback route for unmatched paths
-      {
-        path: '*',
-        element: <LazyAccueilLayout />,
-      },
     ],
   },
   {
@@ -175,6 +186,10 @@ export const router = createBrowserRouter([
       },
       {
         path: '/accueil',
+        element: <LazyAccueilLayout />,
+      },
+      {
+        path: '*',
         element: <LazyAccueilLayout />,
       },
     ],

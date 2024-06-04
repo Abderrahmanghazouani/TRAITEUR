@@ -30,7 +30,7 @@ const DemandeAnnonce = () => {
             </button>
           </a>
 
-          <a href="/accueil">
+          <a href="/admin">
             <button className="flex items-center bg-red-500 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg m-1 transition duration-300 ease-in-out transform hover:-translate-y-1">
               <FaSignOutAlt className="mr-3" />
               Déconnexion

@@ -15,7 +15,7 @@ const AboutUs = () => {
 
   return (
     <>
-      <div className="min-h-[550px] bg-[#f7f1e9] border border-dotted border-black ">
+      <div className="min-h-[550px] bg-[#f7f1e9] border border-dotted">
         <div className="min-h-[550px] flex justify-center items-center backdrop-blur-xl py-10 sm:py-0 ">
           <div
             data-aos="slide-up"

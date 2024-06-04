@@ -1,8 +1,9 @@
 import React from "react";
 import AOS from "aos";
-import DemandeAnnonce from "./Admin/DemandeAnnonce.jsx";
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router/index.jsx";
+import DemandeAnnonce from "./Admin/DemandeAnnonce.jsx";
+
 
 
 
@@ -21,7 +22,7 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router} />
-      <DemandeAnnonce/>  
+      {/* <DemandeAnnonce/>   */}
     </>
   );
 };

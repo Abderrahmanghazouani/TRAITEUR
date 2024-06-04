@@ -122,7 +122,7 @@ export const router = createBrowserRouter([
        element: <Amengement/>,    
       },
       {
-       path: "/decoration",
+       path: "/decoration-florale",
        element: <Florale/>,    
       },
       // Annonces

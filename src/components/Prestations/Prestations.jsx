@@ -53,7 +53,7 @@ const CelebrationImg = [
 
 const Celebration = () => {
   return (
-    <div className="py-10 bg-[#f7f1e9] border border-dotted border-black">
+    <div className="py-10 bg-[#f7f1e9] border border-dotte">
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <p className="text-3xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary font-mono">

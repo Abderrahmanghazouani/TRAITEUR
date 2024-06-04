@@ -28,6 +28,7 @@ const AddAnnonce = () => {
           'X-CSRF-TOKEN': csrfToken,
         },
         withCredentials: true,
+      
       });
 
       if (response.data) {

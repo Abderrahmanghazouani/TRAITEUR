@@ -29,7 +29,7 @@ const Accueil = () => {
   };
 
   const containerStyle = {
-    backgroundColor: "#e3dac9", // Fond de couleur autour des images
+    backgroundColor: "#f7f1e9", // Fond de couleur autour des images
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -39,13 +39,13 @@ const Accueil = () => {
 
   return (
     <>
-      <div className='bg-[#e3dac9]'>
+      <div className='bg-[#f7f1e9]'>
         <div className="container" style={containerStyle}>
           <div
             data-aos="zoom-out"
             data-aos-duration="400"
             data-aos-once="true"
-            className="rounded-lg drop-shadow-[-10px_10px_12px_rgba(0,0,0,1)] border-2 border-yellow-500"
+            className="rounded-lg drop-shadow-[-10px_10px_12px_rgba(0,0,0,1)] border-2  border-yellow-500"
             style={bgImageStyle}
           >
             <h1 className=" text-3xl font-bold mb-4 mx-10 text-transparent bg-black bg-opacity-70 text-center

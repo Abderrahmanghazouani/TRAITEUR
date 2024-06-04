@@ -54,8 +54,8 @@ const Login = () => {
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="block w-full py-4 text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:text-white focus:border-red-700 peer"
-                            placeholder=""
+                            className="block w-full py-2 text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 rounded-xl appearance-none focus:outline-none focus:ring-0 focus:text-white focus:border-red-700 peer"
+                            placeholder="Email"
                         />
                         <label className="absolute text-lg text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">
                             Email
@@ -68,7 +68,7 @@ const Login = () => {
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="block w-full py-4 text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:text-white focus:border-red-700 peer"
+                            className="block w-full py-2 text-lg text-white bg-transparent border-0 border-b-2 border-gray-300 rounded-xl appearance-none focus:outline-none focus:ring-0 focus:text-white focus:border-red-700 peer"
                             placeholder="password"
                         />
                         <label className="absolute text-lg text-white duration-300 transform -translate-y-8 scale-75 top-4 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-red-700 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-8">

@@ -51,11 +51,7 @@ const CelebrationImg = [
 
 const Prestations = () => {
   return (
-<<<<<<< HEAD
-    <div className="py-10 bg-[#f7f1e9] border border-dotte">
-=======
     <div className="py-10 bg-[#e9e2d5] ">
->>>>>>> f99a883d5d7c68a6e494a6e7b7ebacc0894133c4
       <div className="container mx-auto">
         <div className="text-center mb-10">
           <p className="text-3xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary font-mono font-bold">

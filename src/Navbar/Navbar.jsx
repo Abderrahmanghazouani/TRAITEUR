@@ -1,24 +1,14 @@
 import { useState, useEffect, useRef, createContext, useContext } from "react";
 import { Outlet, useLocation } from "react-router-dom";
-
 import Logo from "../assets/logo.jpg";
 import { IoMdContacts } from "react-icons/io";
 import { FiAlignJustify } from "react-icons/fi";
 
-// Create a context to share the navbar height
 const NavbarHeightContext = createContext(0);
 
 const Menu = [
-  {
-    id: 1,
-    name: "ACCUEIL",
-    link: "/accueil",
-  },
-  {
-    id: 2,
-    name: "QUI SOMMES-NOUS?",
-    link: "/about-us",
-  },
+  { id: 1, name: "ACCUEIL", link: "/accueil" },
+  { id: 2, name: "QUI SOMMES-NOUS?", link: "/about-us" },
   {
     id: 3,
     name: "NOS SERVICES",
@@ -32,42 +22,26 @@ const Menu = [
       { id: 6, name: "Autre", link: "/autres-services" },
     ],
   },
-  {
-    id: 4,
-    name: "NOUVELLE ANNONCE",
-    link: "/annonce",
-  },
+  { id: 4, name: "NOUVELLE ANNONCE", link: "/annonce" },
 ];
 
 const Navbar = () => {
   const [isNavbarScrolled, setIsNavbarScrolled] = useState(false);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [dropdownTimeout, setDropdownTimeout] = useState(null);
-  const [showNavbar, setShowNavbar] = useState(false); // State to manage navbar visibility
-  const [verticalNavbar, setVerticalNavbar] = useState(false); // State to manage vertical navbar
+  const [showNavbar, setShowNavbar] = useState(false);
+  const [verticalNavbar, setVerticalNavbar] = useState(false);
   const location = useLocation();
-  const navbarRef = useRef(null); // Ref to get navbar height
+  const navbarRef = useRef(null);
   const [navbarHeight, setNavbarHeight] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100 || location.pathname === "/traiteur") {
-        setIsNavbarScrolled(true);
-      } else {
-        setIsNavbarScrolled(false);
-      }
+      setIsNavbarScrolled(window.scrollY > 100 || location.pathname === "/traiteur");
     };
 
     window.addEventListener("scroll", handleScroll);
-
-    const storedScrollPosition = localStorage.getItem("scrollPosition");
-    if (storedScrollPosition) {
-      window.scrollTo(0, parseInt(storedScrollPosition));
-    }
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -76,10 +50,7 @@ const Navbar = () => {
     };
 
     window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
   }, []);
 
   useEffect(() => {
@@ -93,7 +64,6 @@ const Navbar = () => {
     if (navbarRef.current) {
       resizeObserver.observe(navbarRef.current);
     }
-
     return () => {
       if (navbarRef.current) {
         resizeObserver.unobserve(navbarRef.current);
@@ -111,14 +81,15 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     const timeout = setTimeout(() => {
       setDropdownVisible(false);
-    }, 90); // 0.09 seconds
+    }, 90);
     setDropdownTimeout(timeout);
   };
 
   const toggleNavbar = () => {
     setShowNavbar(!showNavbar);
-    setVerticalNavbar(!verticalNavbar); // Toggle vertical state
+    setVerticalNavbar(!verticalNavbar);
   };
+
   return (
     <NavbarHeightContext.Provider value={navbarHeight}>
       <header
@@ -137,16 +108,11 @@ const Navbar = () => {
               </a>
             </div>
             <div className="sm:hidden">
-              {/* Button to toggle navbar on smaller screens */}
-              <button
-                onClick={toggleNavbar}
-                className="text-xl text-black drop-shadow-sm cursor-pointer"
-              >
+              <button onClick={toggleNavbar} className="text-xl text-black drop-shadow-sm cursor-pointer">
                 <FiAlignJustify />
               </button>
             </div>
             <div className={`sm:flex justify-between items-center gap-4 font-mono font-bold ${showNavbar ? "flex" : "hidden"} ${verticalNavbar ? "flex-col" : "flex-row"}`}>
-              {/* Show/hide navbar based on state */}
               <ul className={`sm:flex items-center gap-4 ${verticalNavbar ? "flex-col" : "hidden"}`}>
                 {Menu.map((menu) => (
                   <li
@@ -155,31 +121,13 @@ const Navbar = () => {
                     onMouseLeave={menu.submenu ? handleMouseLeave : undefined}
                     className="relative"
                   >
-                    <a
-                      href={menu.link}
-                      className="inline-block py-2 px-3 hover:text-yellow-500"
-                    >
-                      {menu.name}
-                    </a>
+                    <a href={menu.link} className="inline-block py-2 px-3 hover:text-yellow-500">{menu.name}</a>
                     {menu.submenu && (
-                      <ul
-                        className={`absolute left-0 top-full mt-2 w-48 shadow-lg border rounded-lg z-20 bg-[#e3dac9] bg-opacity-80 transition-opacity duration-500 ${
-                          dropdownVisible
-                            ? "opacity-100"
-                            : "opacity-0 pointer-events-none"
-                        }`}
-                      >
+                      <ul className={`absolute left-0 top-full mt-2 w-48 shadow-lg border rounded-lg z-20 bg-[#e3dac9] bg-opacity-80 transition-opacity duration-500 ${dropdownVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
                         {menu.submenu.map((sub) => (
                           <li key={sub.id}>
-                            <a
-                              href={sub.link}
-                              className="block py-2 px-4 hover:bg-gray-200"
-                            >
-                              {sub.name}
-                            </a>
-                            {sub.id < menu.submenu.length && (
-                              <hr className="border-t-2 border-[#FFA801]" />
-                            )}
+                            <a href={sub.link} className="block py-2 px-4 hover:bg-gray-200">{sub.name}</a>
+                            {sub.id < menu.submenu.length && <hr className="border-t-2 border-[#FFA801]" />}
                           </li>
                         ))}
                       </ul>
@@ -199,7 +147,6 @@ const Navbar = () => {
           </div>
         </div>
       </header>
-
       <MainContent />
     </NavbarHeightContext.Provider>
   );
@@ -207,7 +154,6 @@ const Navbar = () => {
 
 const MainContent = () => {
   const navbarHeight = useContext(NavbarHeightContext);
-
   return (
     <main style={{ paddingTop: `${navbarHeight}px` }}>
       <Outlet />

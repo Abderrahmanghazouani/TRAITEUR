@@ -1,9 +1,10 @@
+import React from 'react';
 import BiryaniImg from "../../assets/pic-2.jpg";
 import pic3 from "../../assets/pic-3.jpg";
 
 const Nous = () => {
   return (
-    <div className="min-h-screen  py-12 px-4 sm:px-6 lg:px-8 bg-[#f7f1e9]">
+    <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8 bg-[#f7f1e9]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
           {/* Première section */}
@@ -12,7 +13,7 @@ const Nous = () => {
               <img
                 src={BiryaniImg}
                 alt="biryani img"
-                className="max-w-lg mx-auto rounded-lg border border-black"
+                className="w-full rounded-lg border border-black"
               />
             </div>
           </div>
@@ -54,7 +55,7 @@ const Nous = () => {
               <img
                 src={pic3}
                 alt="biryani img"
-                className="max-w-lg mx-auto rounded-lg  border border-black"
+                className="w-full rounded-lg  border border-black"
               />
             </div>
           </div>
